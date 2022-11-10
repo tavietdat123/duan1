@@ -130,16 +130,10 @@ ul{
 
 }
 .content{
-    
+    transition: all linear 0.2s;
     padding: 36px 30px;
 }
-.flight_heading{
-    font-size: 32px;
-    font-weight: 900;
-    line-height: 40px;
-    color: #fff;
-    letter-spacing: 1px;
-}
+
 .footer{
     padding: 40px 0 0 240px;
     background-color: #130026;
@@ -148,6 +142,7 @@ ul{
 }
 .container_footer{
     padding: 0 30px;
+    transition: all linear 0.2s;
 }
 .footer_heading h5{
     font-size: 18px;
