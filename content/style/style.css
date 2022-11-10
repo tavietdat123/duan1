@@ -74,7 +74,7 @@ ul{
     border: none;
     color: #78648a;
     text-align: left;
-    padding-left: 22px;
+    padding-left: 12px;
 
 }
 .nav_link{
@@ -200,4 +200,13 @@ ul{
 }
 .footet_social:hover{
     color: #e1d9e8;
+}
+.header_list_btn i{
+    padding: 10px;
+
+}
+.header_list_btn:hover i{
+background-color: #e1d9e8;
+color: #21033a;
+border-radius: 4px;
 }
