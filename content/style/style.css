@@ -7,7 +7,10 @@
 a{
     text-decoration: none;
 }
-li{
+.header li{
+    list-style: none;
+}
+.footer li{
     list-style: none;
 }
 ul{
@@ -208,4 +211,149 @@ ul{
 background-color: #e1d9e8;
 color: #21033a;
 border-radius: 4px;
+}
+.trips_header{
+    background-color: #2d0a3b;
+}
+.trips_block{
+    width: 454px;
+    margin: 80px 0 0 0 ;
+}
+.trips_btn{
+    min-height: 52px;
+    max-height: 52px;
+    line-height: 18px!important;
+    border: 0px;
+}
+.trips_btn:nth-child(1){
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg,#de1666 0%,#73146f 100%);
+    background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+.trips_btn:nth-child(1):active{
+    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+    background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+.trips_btn:nth-child(1):hover{
+    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+    background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+.trips_btn:nth-child(2){
+    font-weight: bold;
+    color: black;
+    background-color: #fff;
+}
+.trips_btn:nth-child(2):active{
+    color: black;
+    background-color:#fff;
+}
+.trips_btn:nth-child(2):hover{
+    background-color:#fff;
+}
+.trips_info_body{
+    margin: 50px 0 0 60px;
+}
+.item_trips{
+    margin: 100px 0 0 0;
+}
+.item_main_trips{
+    margin-top: 100px;
+    justify-content: space-around;
+}
+.item_info_trips{
+    width: 365.29px;
+}
+.trips_end{
+    text-align: center;
+    margin-top: 100px;
+    margin-left: -50px;
+}
+.trips_end .trips_btn{
+    color: #fff;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg,#de1666 0%,#73146f 100%);
+    background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+.trips_end .content_btn:active{
+    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+    background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+.trips_end .trips_btn:hover{
+    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+    background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+/* introduce */
+.main_introduce{
+    margin-top: 40px;
+}
+.main_introduce p{
+    margin: 10px 0 15px 0;
+}
+.main_introduce u{
+    font-weight: bold;
+}
+.content_introduce li::marker{
+    color: #fff;;
+    font-size: 1.5em;
+}
+.contact_introduce{
+    margin: 30px 0 0 0;
+    padding-bottom: 90px;
 }
