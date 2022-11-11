@@ -6,10 +6,12 @@ const content = document.querySelector('.container_content')
 const content1 = document.querySelector('.content')
 const footer = document.querySelector('.footer')
 const footer1 = document.querySelector('.container_footer')
+const row =  document.querySelector('.slider_js')
 
 let control = false
-console.dir(nav)
 btnHeader.onclick = ()=>{
+
+ 
     if(control){
         nav.style.width = 240 + 'px'
         nav_link.forEach(el=>{
@@ -35,6 +37,9 @@ btnHeader.onclick = ()=>{
         footer1.style.padding = "0 85px"
         control= true
       } 
+    setTimeout(()=>{
+        if(row){row.style.transform = `translateX(-${row.offsetWidth * index}px)` }
+    },200)
     }
     
     
