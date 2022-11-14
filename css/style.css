@@ -1,22 +1,27 @@
-.svg_image{
+.svg_image {
     width: 130px;
     height: 20px;
     display: block;
     cursor: pointer;
 }
-a{
+
+a {
     text-decoration: none;
 }
-.header li{
+
+.header li {
     list-style: none;
 }
-.footer li{
+
+.footer li {
     list-style: none;
 }
-ul{
+
+ul {
     padding: 0;
 }
-.header{
+
+.header {
     height: 62px;
     padding: 0 18px 0 256px;
     display: flex;
@@ -26,20 +31,21 @@ ul{
     top: 0;
     transition: all linear 0.2s;
     z-index: 9999999999;
-
-    
 }
-.login_trips{
+
+.login_trips {
     color: #fff;
     font-weight: 600;
     font-size: 14px;
     margin-right: 15px;
 }
-.login_trips:hover{
+
+.login_trips:hover {
     color: #f57318;
     cursor: pointer;
 }
-.btn_login{
+
+.btn_login {
     background-color: transparent;
     color: #fff;
     border: 1px solid #fff;
@@ -50,14 +56,16 @@ ul{
     cursor: pointer;
 }
 
-.btn_login i{
-    padding: 3px 5px 0 0 ;
+.btn_login i {
+    padding: 3px 5px 0 0;
 }
+
 .btn_login:hover {
     background-color: #fff;
     color: #21033a;
 }
-.nav{
+
+.nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -71,10 +79,11 @@ ul{
     z-index: 9999999999999;
 }
 
-.header_list{
+.header_list {
     height: 66px;
 }
-.header_list_btn{
+
+.header_list_btn {
     width: 100%;
     background-color: #21033a;
     height: 100%;
@@ -82,9 +91,9 @@ ul{
     color: #78648a;
     text-align: left;
     padding-left: 12px;
-
 }
-.nav_link{
+
+.nav_link {
     color: #78648a;
     height: 43px;
     margin: 2px 8px 0;
@@ -93,142 +102,156 @@ ul{
     align-items: center;
     border-radius: 5px;
     font-weight: 600;
-    
 }
+
 .nav_link:hover span,
 .nav_link:hover i,
-.nav_link:hover{
+.nav_link:hover {
     background-color: #e1d9e8;
     color: #9684a4;
 }
+
 .nav_link.active span,
 .nav_link.active i,
-.nav_link.active{
+.nav_link.active {
     background-color: #e1d9e8;
     color: #21033a;
-    
-    
 }
-.nav_link i{
+
+.nav_link i {
     padding: 7px;
     font-size: 16px;
 }
-.nav_link span{
+
+.nav_link span {
     color: #fff;
     margin: 0 0 0 17px;
     font-size: 14px;
-    
 }
 
-.nav_1 a{
+.nav_1 a {
     border-bottom: 1px solid #572981;
     margin: 15px 8px;
-
 }
-.nav_2 a:last-child{
+
+.nav_2 a:last-child {
     border-bottom: 1px solid #572981;
     margin: 15px 8px;
-
 }
-.container_content{
+
+.container_content {
     padding: 62px 0 0 240px;
     background-color: #21033a;
     transition: all linear 0.2s;
-
 }
-.content{
+
+.content {
     transition: all linear 0.2s;
     padding: 36px 30px;
 }
 
-.footer{
+.footer {
     padding: 40px 0 0 240px;
     background-color: #130026;
     transition: all linear 0.2s;
-
 }
-.container_footer{
+
+.container_footer {
     padding: 0 30px;
     transition: all linear 0.2s;
 }
-.footer_heading h5{
+
+.footer_heading h5 {
     font-size: 18px;
     color: #fff;
-
 }
-.footer_list_link{
+
+.footer_list_link {
     font-size: 14px;
     color: #fff;
     margin-bottom: 8px;
     display: block;
 }
-.footer_list_link:hover{
+
+.footer_list_link:hover {
     color: #fff;
     text-decoration: underline;
 }
-.footer_img_pay img{
-    height: 40px; 
+
+.footer_img_pay img {
+    height: 40px;
     margin-top: 20px;
     margin-right: 10px;
 }
-.footer_policy{
+
+.footer_policy {
     padding: 50px 0 20px;
     text-align: center;
     width: 100%;
 }
-.footer_policy_link{
+
+.footer_policy_link {
     margin: 0 10px;
     font-size: 12px;
     color: #919191;
 }
-.footer_policy_link:hover{
-    color:#919191 ;
-    text-decoration: underline;
 
+.footer_policy_link:hover {
+    color: #919191;
+    text-decoration: underline;
 }
-.footet_social-media{
+
+.footet_social-media {
     text-align: center;
 }
-.footet_social{
+
+.footet_social {
     color: #fff;
     margin: 0 15px;
     padding: 15px 0;
 }
-.footer_p{
+
+.footer_p {
     color: #d5d5d5;
     text-align: center;
     font-size: 12px;
     padding: 20px 0;
 }
-.footet_social:hover{
+
+.footet_social:hover {
     color: #e1d9e8;
 }
-.header_list_btn i{
-    padding: 10px;
 
+.header_list_btn i {
+    padding: 10px;
 }
-.header_list_btn:hover i{
-background-color: #e1d9e8;
-color: #21033a;
-border-radius: 4px;
+
+.header_list_btn:hover i {
+    background-color: #e1d9e8;
+    color: #21033a;
+    border-radius: 4px;
 }
-.trips_header{
+
+.trips_header {
     background-color: #2d0a3b;
 }
-.trips_block{
+
+.trips_block {
     width: 454px;
-    margin: 80px 0 0 0 ;
+    margin: 80px 0 0 0;
 }
-.trips_btn{
+
+.trips_btn {
     min-height: 52px;
     max-height: 52px;
     line-height: 18px!important;
     border: 0px;
 }
-.trips_btn:nth-child(1){
+
+.trips_btn:nth-child(1) {
     font-weight: bold;
     margin-bottom: 20px;
-    background: linear-gradient(135deg,#de1666 0%,#73146f 100%);
+    background: linear-gradient(135deg, #de1666 0%, #73146f 100%);
     background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
     background-position-x: initial;
     background-position-y: initial;
@@ -240,8 +263,9 @@ border-radius: 4px;
     background-clip: initial;
     background-color: initial;
 }
-.trips_btn:nth-child(1):active{
-    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+
+.trips_btn:nth-child(1):active {
+    background: linear-gradient(135deg, #de1666 0%, #73146f 80%);
     background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
     background-position-x: initial;
     background-position-y: initial;
@@ -253,8 +277,9 @@ border-radius: 4px;
     background-clip: initial;
     background-color: initial;
 }
-.trips_btn:nth-child(1):hover{
-    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+
+.trips_btn:nth-child(1):hover {
+    background: linear-gradient(135deg, #de1666 0%, #73146f 80%);
     background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
     background-position-x: initial;
     background-position-y: initial;
@@ -266,42 +291,51 @@ border-radius: 4px;
     background-clip: initial;
     background-color: initial;
 }
-.trips_btn:nth-child(2){
+
+.trips_btn:nth-child(2) {
     font-weight: bold;
     color: black;
     background-color: #fff;
 }
-.trips_btn:nth-child(2):active{
+
+.trips_btn:nth-child(2):active {
     color: black;
-    background-color:#fff;
+    background-color: #fff;
 }
-.trips_btn:nth-child(2):hover{
-    background-color:#fff;
+
+.trips_btn:nth-child(2):hover {
+    background-color: #fff;
 }
-.trips_info_body{
+
+.trips_info_body {
     margin: 50px 0 0 60px;
 }
-.item_trips{
+
+.item_trips {
     margin: 100px 0 0 0;
 }
-.item_main_trips{
+
+.item_main_trips {
     margin-top: 100px;
     justify-content: space-around;
 }
-.item_info_trips{
+
+.item_info_trips {
     width: 365.29px;
 }
-.trips_end{
+
+.trips_end {
     text-align: center;
     margin-top: 100px;
     margin-left: -50px;
 }
-.trips_end .trips_btn{
+
+.trips_end .trips_btn {
     color: #fff;
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 20px;
-    background: linear-gradient(135deg,#de1666 0%,#73146f 100%);
+    background: linear-gradient(135deg, #de1666 0%, #73146f 100%);
     background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
     background-position-x: initial;
     background-position-y: initial;
@@ -313,8 +347,9 @@ border-radius: 4px;
     background-clip: initial;
     background-color: initial;
 }
-.trips_end .content_btn:active{
-    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+
+.trips_end .content_btn:active {
+    background: linear-gradient(135deg, #de1666 0%, #73146f 80%);
     background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
     background-position-x: initial;
     background-position-y: initial;
@@ -326,8 +361,9 @@ border-radius: 4px;
     background-clip: initial;
     background-color: initial;
 }
-.trips_end .trips_btn:hover{
-    background: linear-gradient(135deg,#de1666 0%,#73146f 80%);
+
+.trips_end .trips_btn:hover {
+    background: linear-gradient(135deg, #de1666 0%, #73146f 80%);
     background-image: linear-gradient(135deg, rgb(222, 22, 102) 0%, rgb(115, 20, 111) 100%);
     background-position-x: initial;
     background-position-y: initial;
@@ -339,21 +375,29 @@ border-radius: 4px;
     background-clip: initial;
     background-color: initial;
 }
+
+
 /* introduce */
-.main_introduce{
+
+.main_introduce {
     margin-top: 40px;
 }
-.main_introduce p{
+
+.main_introduce p {
     margin: 10px 0 15px 0;
 }
-.main_introduce u{
+
+.main_introduce u {
     font-weight: bold;
 }
-.content_introduce li::marker{
-    color: #fff;;
+
+.content_introduce li::marker {
+    color: #fff;
+    ;
     font-size: 1.5em;
 }
-.contact_introduce{
+
+.contact_introduce {
     margin: 30px 0 0 0;
     padding-bottom: 90px;
 }

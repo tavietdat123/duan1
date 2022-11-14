@@ -57,7 +57,7 @@
 
             </div>
             <div class="nav_2 d-flex flex-column">
-                <a href="index.php" class="nav_link active"><i class="fa-solid fa-plane"></i><span>Chuyến Bay</span></a>
+                <a href="index.php" class="nav_link"><i class="fa-solid fa-plane"></i><span>Chuyến Bay</span></a>
                 <a href="index.php?action=experience" class="nav_link"><i class="fa-solid fa-inbox"></i><span>Trải Nghiệm</span></a>
                 <a href="index.php?action=endow" class="nav_link"><i class="fa-brands fa-salesforce"></i><span>Ưu Đãi</span></a>
                 <a href="index.php?action=news" class="nav_link"><i class="fa-solid fa-newspaper"></i><span>Tin Tức</span></a>
