@@ -1,7 +1,7 @@
 <?php 
-function addInfor($logo, $urlWebsite, $tell, $email, $address, $imgFacebook, $urlFacebook, $imgInstagram, $urlInstagram, $imgYoutube, $urlYoutube)
+function addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $urlFacebook, $instagram, $urlInstagram, $youtube, $urlYoutube)
 {
-    $sql = "insert into information(logo, url_Website, tell, email, address, facebook,url_facebook, instagram, url_instagram, youtube, url_youtube) values('$logo', '$urlWebsite', '$tell', '$email', '$address', '$imgFacebook', '$urlFacebook', '$imgInstagram', '$urlInstagram', '$imgYoutube', '$urlYoutube')";
+    $sql = "insert into information(logo, url_Website, tell, email, address, facebook,url_facebook, instagram, url_instagram, youtube, url_youtube) values('$logo', '$urlWebsite', '$tell', '$email', '$address', '$facebook', '$urlFacebook', '$instagram', '$urlInstagram', '$youtube', '$urlYoutube')";
 
     pdo_execute($sql);
 }
@@ -9,9 +9,17 @@ function addInfor($logo, $urlWebsite, $tell, $email, $address, $imgFacebook, $ur
 function loadAllInfor(){
     $sql="select * from information where 1 order by id desc";
 
-    $listInfor=pdo_query($sql);
+    $loadAllInformation=pdo_query($sql);
 
-    return $listInfor;
+    return $loadAllInformation;
 }
+
+function deleteInfor($id)
+{
+    $sql = "delete from information where id=" . $id;
+
+    pdo_execute($sql);
+}
+
 
 ?>

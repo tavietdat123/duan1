@@ -19,13 +19,13 @@ if (isset($_GET['action'])) {
                 $email = $_POST['email'];
                 $address = $_POST['address'];
 
-                $imgFacebook = $_FILES['facebook']['name'];
+                $facebook = $_FILES['facebook']['name'];
                 $urlFacebook = $_POST['url_facebook'];
-                
-                $imgInstagram = $_FILES['instagram']['name'];
+
+                $instagram = $_FILES['instagram']['name'];
                 $urlInstagram = $_POST['url_instagram'];
-                
-                $imgYoutube = $_FILES['youtube']['name'];
+
+                $youtube = $_FILES['youtube']['name'];
                 $urlYoutube = $_POST['url_youtube'];
 
                 $target_dir = "../upload/";
@@ -38,21 +38,32 @@ if (isset($_GET['action'])) {
                 } else {
                 }
 
-                addInfor($logo, $urlWebsite, $tell, $email, $address, $imgFacebook, $urlFacebook, $imgInstagram, $urlInstagram, $imgYoutube, $urlYoutube);
+                addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $urlFacebook, $instagram, $urlInstagram, $youtube, $urlYoutube);
 
                 $thongbao = "Thêm thông tin thành công";
 
                 // $thongbao = insertProduct($productName, $productPrice, $img,$describe, $idCategory);
             }
 
-            $listInfor=loadAllInfor();
+            $loadAllInformation = loadAllInfor();
 
             include 'information/add_infor.php';
             break;
 
         case 'information':
 
-            $listInfor=loadAllInfor();
+            $loadAllInformation = loadAllInfor();
+            include 'information/information.php';
+            break;
+
+        case "delete_infor":
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                deleteInfor($_GET['id']);
+            }
+
+            $loadAllInformation = loadAllInfor();
+
             include 'information/information.php';
             break;
 
