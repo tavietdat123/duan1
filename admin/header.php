@@ -10,6 +10,7 @@
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/information.css">
 </head>
 
 <body>
@@ -39,7 +40,7 @@
 
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="index.php">
                                 <i class="bx bx-home-alt icon"></i>
                                 <span class="text nav-text">Thống kê</span>
                             </a>
@@ -103,7 +104,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="index.php?action=information">
                                 <i class="bx bx-info-circle icon"></i>
                                 <span class="text nav-text">Thông tin</span>
                             </a>

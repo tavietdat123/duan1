@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 require_once "../../model/PDO.php";
 session_start();
@@ -52,6 +53,13 @@ $rows = pdo_query("select * from account");
         <div class="login_header d-flex ju">
             <div class="d-flex">
             <svg class="svg_image_header_login" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 38">
+=======
+<div class="container-content">
+
+    <div class="login_contnet">
+        <div class="login_slide d-flex flex-column align-items-center">
+            <svg class="svg_image_login" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 38">
+>>>>>>> 4dcd66bf995c70b8e4143453d1db455160620687
                 <defs>
                     <linearGradient id="logos806a-1" x2="0" y2="100%">
                         <stop offset="0" stop-color="#00d7e5"></stop>
@@ -223,6 +231,11 @@ $rows = pdo_query("select * from account");
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </body>
 </html>
         
+=======
+</div>
+
+>>>>>>> 4dcd66bf995c70b8e4143453d1db455160620687
