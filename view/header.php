@@ -1,3 +1,14 @@
+<?php
+
+$boolean=false;
+if(isset($_SESSION['client'])){
+$email = $_SESSION['client'];
+$user = pdo_query_one("select * from account where email = '$email'");
+if($user != []){
+    $boolean = true;
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +22,7 @@
     />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/datstyle.css">
-    <title>Website đặt vé máy bay</title>
+    <title><?= $TITLE_NAME?></title>
 </head>
 
 <body>
@@ -42,30 +53,61 @@
                     d="M218.4 0h-5.9c-.3 0-.5.2-.5.5v13c-1.3-1.2-4.3-2.4-7-2.4-8.8 0-14 5.9-14 13.4s5.2 13.4 14 13.4c8.7 0 14-5.2 14-14.6V.4c-.1-.2-.3-.4-.6-.4zm-13.5 31.3c-5.2 0-7.3-3-7.3-6.8 0-3.7 2.1-6.8 7.3-6.8 4.9 0 7.3 3 7.3 6.8s-2.2 6.8-7.3 6.8zM236 11.1c-8.8 0-14 5.9-14 13.4s5.2 13.4 14 13.4 14-5.9 14-13.4c0-7.4-5.3-13.4-14-13.4zm0 20.2c-5.2 0-7.3-3.1-7.3-6.8 0-3.7 2.1-6.8 7.3-6.8 4.9 0 7.3 3.1 7.3 6.8 0 3.8-2.2 6.8-7.3 6.8z">
                 </path>
             </svg>
+
             <div class="container_login d-flex align-items-center">
                 <div class="login_trips">
-                    <span>Các Chuyến Đi</span>
+                    <a href="/index.php?action=trips">Các Chuyến Đi</a>
                 </div>
-                <a class="btn_login " href="index.php?action=login"><i class="fa-regular fa-user"></i> <span>Đăng Nhập</span></a>
+                <?php if($boolean):?>
+                <div class="d-flex align-items-center logo__item_user">
+                    <span class="logo__text_user register"><?=$user['fullName']?></span>
+                    <div class="logo__item  d-flex align-items-center">
+                    <div class="ms-2">
+                  <img class="logo_item_avt"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhlPE0gXGOoAq3qU3GHKSS2Ih3VQDLzZ6GQ&usqp=CAU"
+                    alt=""
+                  /></div><div>
+                  </div>
+                  <div class="control_user">
+                    <div class="control_user_list">
+                        <div class="control_user_item"><a class="control_user_link" href="">Tài Khoản</a> </div>
+                        <div class="control_user_item"><a class="control_user_link" href="/view/account/changePassword.php">Đổi mật khẩu</a> </div>
+                        <div class="control_user_item"><a class="control_user_link" href="/view/account/logout.php">Đăng xuất</a> </div>
+                    </div>
+                  </div>
+                </div>
+</div>
+<?php endif ?>
+<?php if(!$boolean):?>
+                <a class="btn_login " href="/view/account/login.php"><i class="fa-regular fa-user"></i> <span>Đăng Nhập</span></a>
+<?php endif ?>
+
             </div>
         </div>
         <div class="nav d-flex flex-column">
             <div class="header_list"><button class="header_list_btn">
                     <i class="fa-solid fa-list"></i></button></div>
             <div class="nav_1">
-                <a href="index.php?action=login" class="nav_link"><i class="fa-regular fa-user"></i><span>Đăng Nhập</span></a>
+            <?php if(!$boolean):?>
+
+                <a href="/view/account/login.php" class="nav_link"><i class="fa-regular fa-user"></i><span>Đăng Nhập</span></a>
+<?php endif ?>
+
+                <?php if($boolean):?>
+                <p  class="nav_link"><i class="fa-regular fa-user"></i><span><?=$user['fullName']?></span></p>
+                <?php endif ?>
 
             </div>
             <div class="nav_2 d-flex flex-column">
-                <a href="index.php" class="nav_link"><i class="fa-solid fa-plane"></i><span>Chuyến Bay</span></a>
-                <a href="index.php?action=experience" class="nav_link"><i class="fa-solid fa-inbox"></i><span>Trải Nghiệm</span></a>
-                <a href="index.php?action=endow" class="nav_link"><i class="fa-brands fa-salesforce"></i><span>Ưu Đãi</span></a>
-                <a href="index.php?action=news" class="nav_link"><i class="fa-solid fa-newspaper"></i><span>Tin Tức</span></a>
-                <a href="index.php?action=review" class="nav_link"><i class="fa-solid fa-barcode"></i><span>Giới Thiệu</span></a>
+                <a href="index.php" class="nav_link <?php if(!isset($_GET['action'])){echo"active";}?>"><i class="fa-solid fa-plane"></i><span>Chuyến Bay</span></a>
+                <a href="index.php?action=experience" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "experience" ){echo"active";}?>"><i class="fa-solid fa-inbox"></i><span>Trải Nghiệm</span></a>
+                <a href="index.php?action=endow" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "endow" ){echo"active";}?>"><i class="fa-brands fa-salesforce"></i><span>Ưu Đãi</span></a>
+                <a href="index.php?action=news" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "news" ){echo"active";}?>"><i class="fa-solid fa-newspaper"></i><span>Tin Tức</span></a>
+                <a href="index.php?action=review" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "review" ){echo"active";}?>"><i class="fa-solid fa-barcode"></i><span>Giới Thiệu</span></a>
             </div>
             <div class="nav_3 d-flex flex-column">
                 <a href="index.php?action=contact" class="nav_link"><i class="fa-solid fa-address-book"></i><span>Liên Hệ</span></a>
-                <a href="index.php?action=trips" class="nav_link"><i class="fa-solid fa-plane-departure"></i><span>Các Chuyến Bay</span></a>
+                <a href="index.php?action=trips" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "trips" ){echo"active";}?>"><i class="fa-solid fa-plane-departure"></i><span>Các Chuyến Bay</span></a>
             </div>
         </div>
     </header>

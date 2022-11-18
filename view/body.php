@@ -1,47 +1,38 @@
+
 <div class="container_content">
         <div class="content">
             <div class="flight_heading">
-                <h3>Tìm và so sánh các chuyến bay giá rẻ</h3>
+                <h3>Tìm Chuyến Bay Giá Rẻ</h3>
             </div>
             <div class="flight_search">
-                <div class="flight_search_select">
-                    <div class="flight_search_select_btn"><span>Khứ Hồi</span><i class="fa-solid fa-chevron-down"></i>
-                    </div>
-                    <div class="flight_search_select_btn"><span>1 Người lớn</span><i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="flight_search_select_btn"><span>Nền kinh tế</span><i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="flight_search_select_btn"><span>0 túi</span><i class="fa-solid fa-chevron-down"></i>
-                    </div>
-                </div>
-                <div class="flight_search_form ">
-                    <div class="container_search_form ">
+                <form action="index.php?action=sr" method="post" class="flight_search_form mt-4">
+                    <div class="container_search_form">
+                        <div class="container_search_form_s">
                         <div class="search_from">
                             <label for=""><i class="fa-solid fa-plane"></i></label>
-                            <input type="text" placeholder="from...">
+                            <input type="text" name="s_from" placeholder="from..." required>
                         </div>
                         <div class="search_swap">
                             <i class="fa-solid fa-right-left"></i>
                         </div>
                         <div class="search_to">
                             <label for=""><i class="fa-solid fa-plane"></i></label>
-                            <input type="text" placeholder="To...">
+                            <input type="text" name="s_to" placeholder="To..." required>
                         </div>
                         <div class="search_timer">
                             <div class="search_timer_1">
-                                <input type="date">
+                                <input type="date" name="timer_1" required>
                             </div>
-
                             <div class="search_timer_2">
-                                <input type="date">
+                                <input type="date" name="timer_2" required>
                             </div>
-
-
+                           </div>
                         </div>
-
                     </div>
                     <div class="search_btn">
-                        <button>Tìm Kiếm</button>
+                        <button name="check">Tìm Kiếm</button>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="flight_reason">
                 <div class="reason_heading">
@@ -128,106 +119,6 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-3 shouldcome_item">
-                                <a href="">
-                                    <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                    </div>
-                                    <div class="flght_shouldcome_text">
-                                        <h5>Nước Thái Lan </h5>
-                                        <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                    </div>
-                                </a>
-                            </div>
-
                             <div class="col-3 shouldcome_item">
                                 <a href="">
                                     <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
@@ -396,10 +287,9 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
     </div>
+    <script src="../js/sliderFlight.js"></script>

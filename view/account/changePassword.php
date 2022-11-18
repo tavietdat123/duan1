@@ -1,51 +1,42 @@
 <?php
 require_once '../../model/PDO.php';
-$rows = pdo_query('select * from account');
-
+session_start();
+$email =  $_SESSION['client'];
+$row = pdo_query_one("select * from account where email = '$email'");
  if(isset($_POST['check'])){
-  $username_dk = $_POST['username_dk'];
-  $emailphone_dk = $_POST['emailphone_dk'];
+
+  $password_new = $_POST['password_new'];
   $password_dk = $_POST['password_dk'];
   $re_password_dk = $_POST['re_password_dk'];
-  $role = 1;
+  
 
-$checktk=0;
-foreach ($rows as $key => $value) {
-    if(isset($emailphone_dk)){
-   if($value['email'] == $emailphone_dk){
-    $checktk = 1;
-   }}}
-if($username_dk == ""){
-    $errorusn = "Bạn chưa nhập fullName";
-}
-            if($emailphone_dk == "") {
-                $errorem = "Bạn chưa nhập email";
-            }else if(!filter_var($emailphone_dk , FILTER_VALIDATE_EMAIL)){
-                $errorem ="Email không đúng định dạng";
-            }elseif($checktk == 1){
-                $errorem="Email đã tồn tại";
+            if($password_new == "") {
+                $errorem = "Bạn chưa nhập Mật khẩu";
+            }elseif(!($row['passWord'] == $password_new)){
+                $errorem="Mật khẩu không trùng khớp";
                      } 
             if($password_dk == "") {
-                $errormk = "Bạn chưa nhập Mật khẩu";
-            }elseif(strlen($password_dk) < 6){
+                $errormk = "Bạn chưa nhập Mật khẩu mới";
+            }elseif($password_dk < 6){
                 $errormk ="Mật khẩu ít nhất 6 kí tự";
+            }elseif($password_new == $password_dk){
+                $errormk ="Mật khẩu không được trùng với mật khẩu hiện tại";
+
             }
                 if($re_password_dk == "") {
-                    $errorremk =  "Nhập lại mật khẩu không trùng khớp";
+                    $errorremk =  "Nhập lại mật khẩu mới không trùng khớp";
                 }elseif(!($re_password_dk == $password_dk)){
-                    $errorremk =  "Nhập lại mật khẩu không trùng khớp";
+                    $errorremk =  "Nhập lại mật khẩu mới không trùng khớp";
                 }
-if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk)){
-    $create_user ="INSERT INTO account (fullName,password,email,role)" . 
-    "VALUES ('$username_dk','$password_dk','$emailphone_dk',$role)";
-    pdo_execute($create_user);
-    header("location: login.php");
 
-    
-   
+if( !isset($errorem) && !isset($errormk)&& !isset($errorremk)){
+    $create_user ="update account set passWord = '$password_dk' where email = '$email'";
+    pdo_execute($create_user);
+    echo"<script>alert(Đổi mật khẩu thành công);</script>";
+    header("location: /index.php");
+
 }}
-    
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +44,7 @@ if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký</title>
+    <title>Đổi mật khẩu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -92,9 +83,9 @@ if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk
                     d="M218.4 0h-5.9c-.3 0-.5.2-.5.5v13c-1.3-1.2-4.3-2.4-7-2.4-8.8 0-14 5.9-14 13.4s5.2 13.4 14 13.4c8.7 0 14-5.2 14-14.6V.4c-.1-.2-.3-.4-.6-.4zm-13.5 31.3c-5.2 0-7.3-3-7.3-6.8 0-3.7 2.1-6.8 7.3-6.8 4.9 0 7.3 3 7.3 6.8s-2.2 6.8-7.3 6.8zM236 11.1c-8.8 0-14 5.9-14 13.4s5.2 13.4 14 13.4 14-5.9 14-13.4c0-7.4-5.3-13.4-14-13.4zm0 20.2c-5.2 0-7.3-3.1-7.3-6.8 0-3.7 2.1-6.8 7.3-6.8 4.9 0 7.3 3.1 7.3 6.8 0 3.8-2.2 6.8-7.3 6.8z">
                 </path>
             </svg>
-            <h4 >Đăng Ký</h4>
+            <h4 >Đổi Mật Khẩu</h4>
         </div>
-            <a class="login_header_link" href="/index.php">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
+            <a class="login_header_link" href="/flight.html">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
         </div>
         
     </div>
@@ -129,39 +120,21 @@ if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk
             </div>
             <div class="login_form">
                 <div class="login_form_heading">
-                    <h4>Đăng Ký</h4>
+                    <h4>Đổi Mật Khẩu</h4>
                 </div>
-                <form action="" method="post"   class=" d-flex flex-column">
-                    <input type="text" placeholder="Nhập Email..." name="emailphone_dk" value="<?php if(isset($emailphone_dk)){echo$emailphone_dk;}?>">
+                <form action="./changePassword.php" method="post"   class=" d-flex flex-column">
+                    <input type="text" placeholder="Nhập Email..." name="password_new" value="<?php if(isset($password_new)){echo$password_new;}?>">
                     <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"><?php if(isset($errorem)){echo$errorem;} ?></p>
-                    <input type="text" placeholder="Nhập Fullname..." name='username_dk' value="<?php if(isset($username_dk)){echo$username_dk;}?>">
-                    <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"><?php if(isset($errorusn)){echo$errorusn;} ?></p>
                     <input type="password" placeholder="Nhập Password..." name="password_dk" value="<?php if(isset($password_dk)){echo$password_dk;}?>">
                     <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"><?php if(isset($errormk)){echo$errormk;} ?></p>
                     <input type="password" placeholder="Nhập Re-Password..." name="re_password_dk" value="<?php if(isset($re_password_dk)){echo$re_password_dk;}?>">
                     <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"><?php if(isset($errorremk)){echo$errorremk;} ?></p>
-                    <button name='check'>Đăng Ký</button>
+                    <button name='check'>Đổi Mật khẩu</button>
                 </form>
-                
-                <div class="login_form_line d-flex align-items-center mt-4">
-                    <div class="login_form_line_1"></div>
-                    <div class="login_form_line_text">
-                        HOẶC
-                    </div>
-                    <div class="login_form_line_2"></div>
-
-                </div>
-                <div class="login_form_social d-flex mt-3">
-                    <button class="login_form_social_1"><i class="fa-brands fa-square-facebook"></i>Facebook</button>
-                    <button class="login_form_social_1"><i class="fa-brands fa-google"></i>google</button>
-                </div>
-                <div class="register_sp d-flex justify-content-between mt-4 mb-1">
-                    <p>Bằng việc đăng ký, bạn đã đồng ý với Momondo về <br> <a href="">điều khoản dịch vụ</a> & <a href="">chính sách bảo mật</a></p>
-                </div>
                 <div class="login_form_register mb-0 mt-4">
-                    <p>Bạn đã có tài khoản <a href="login.php">Đăng Nhập</a></p>
+                   
                 </div>
-                </div>
+            </div>
     </div>
     <div class="footer ps-5 pe-5">
         <div class="container_footer">
@@ -244,4 +217,3 @@ if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk
     </div>
 </body>
 </html>
-            

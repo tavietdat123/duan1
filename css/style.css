@@ -33,14 +33,14 @@ ul {
     z-index: 9999999999;
 }
 
-.login_trips {
+.login_trips a {
     color: #fff;
     font-weight: 600;
     font-size: 14px;
     margin-right: 15px;
 }
 
-.login_trips:hover {
+.login_trips:hover a {
     color: #f57318;
     cursor: pointer;
 }
@@ -130,6 +130,10 @@ ul {
 }
 
 .nav_1 a {
+    border-bottom: 1px solid #572981;
+    margin: 15px 8px;
+}
+.nav_1 p{
     border-bottom: 1px solid #572981;
     margin: 15px 8px;
 }

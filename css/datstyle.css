@@ -27,13 +27,18 @@ p {
   font-size: 14px;
   margin-left: 4px;
 }
-.container_search_form {
+
+.container_search_form_s {
   display: flex;
-  flex: 1;
   height: 68px;
-  padding: 4px;
+  
+}
+.container_search_form{
   background-color: #0095cc;
   border-radius: 6px;
+  flex: 1;
+  padding: 4px;
+
 }
 .flight_search_form {
   display: flex;
@@ -429,7 +434,7 @@ p {
 }
 .login_form_heading{
   text-align: center;
-  padding: 30px;
+  padding: 25px 25px 0 25px;
 }
 
 .login_form {
@@ -440,20 +445,18 @@ p {
   font-size: 14px;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
-  margin-bottom: 30px;
+  margin-top: 25px;
   outline: none;
   
 }
-.login_form form input:focus{
-  border: 1px solid #555;
 
-}
 .login_form form button{
   height: 40px;
   border: none;
   background-color: #21033a;
   color: #fff;
   border-radius: 2px;
+  margin-top: 30px;
 
 }
 .login_form form button:hover{
@@ -508,4 +511,90 @@ p {
   text-align: center;
   padding: 0 33px;
   margin-top: 20px;
+}
+.logo__item_user{
+  cursor: pointer;
+  position: relative;
+  
+}
+.logo_item{
+  
+}
+.logo_item_avt{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.logo__text_user{
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+  font-size: 15px;
+  font-weight: 600;
+}
+.logo__item_user:hover .control_user{
+  display: block;
+}
+.control_user{
+  position: absolute;
+  top: calc(100% + 1px);
+  background-color: #fff;
+  min-width: 150px;
+  padding: 10px 0 0;
+  border-radius: 5px;
+  right: 0;
+  box-shadow: 0 1px 2px #b9b8b8;
+  z-index: 99;
+overflow: hidden;
+display: none;
+
+}
+.control_user_link{
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 10px;
+  display: block;
+}
+.control_user_link:hover{
+  background-color: #f7f7f7;
+  color: #555;
+
+}
+.sr_container{
+  margin-top: 30px;
+  margin-bottom: 200px;
+  
+
+}
+.sr_bd{
+  border-radius: 6px;
+  overflow: hidden;
+}
+.sr_img{
+  width: 90px;
+}
+.sr_content{
+  padding: 20px 40px 20px 20px;
+  font-weight: 600;
+}
+.sr_price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 40px;
+  background-color: #edecec;
+  padding: 20px 40px;
+
+}
+.sr_price_main{
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+
+}
+.sr_from,.sr_to{
+font-size: 14px;
+font-weight: 400;
 }
