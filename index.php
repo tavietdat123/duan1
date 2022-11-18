@@ -28,7 +28,7 @@ if (isset($_GET['action'])) {
     $TITLE_NAME = "Chuyến bay";
 
 }
-require_once './model/PDO.php';
+require_once './DAO/PDO.php';
 session_start();
 include "view/header.php";
 if (isset($_GET['action'])) {

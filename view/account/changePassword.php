@@ -1,5 +1,5 @@
 <?php
-require_once '../../model/PDO.php';
+require_once '../../DAO/PDO.php';
 session_start();
 $email =  $_SESSION['client'];
 $row = pdo_query_one("select * from account where email = '$email'");

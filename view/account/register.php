@@ -1,5 +1,5 @@
 <?php
-require_once '../../model/PDO.php';
+require_once '../../DAO/PDO.php';
 $rows = pdo_query('select * from account');
 
  if(isset($_POST['check'])){
@@ -65,7 +65,6 @@ if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
         <div class="login_header d-flex ju">
             <div class="d-flex">
             <svg class="svg_image_header_login" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 38">
@@ -97,9 +96,7 @@ if(!isset($errorusn) && !isset($errorem) && !isset($errormk)&& !isset($errorremk
         </div>
             <a class="login_header_link" href="/index.php">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
         </div>
-=======
-        
->>>>>>> 4dcd66bf995c70b8e4143453d1db455160620687
+
         
     </div>
     <div class="login_contnet">
