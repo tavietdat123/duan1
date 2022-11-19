@@ -2,7 +2,7 @@
     <div class="text">Thêm thông tin Website</div>
 
     <main class="infor">
-    <form action="index.php?action=add_infor" method="post" enctype="multipart/form-data">
+    <form action="index.php?action=addInfor" method="post" enctype="multipart/form-data">
             <label for="">ID</label>
             <br>
             <input type="number" name="id" disabled class="input-text">
@@ -48,7 +48,7 @@
             <input type="file" name="youtube" class="input-text">
             <br><br>
 
-           <input name="add_infor" type="submit" value="THÊM MỚI" class="btn-add">
+           <input name="addInfor" type="submit" value="THÊM MỚI" class="btn-add">
 
             <input type="reset" value="NHẬP LẠI" class="btn-reset">
 

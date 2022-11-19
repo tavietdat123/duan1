@@ -88,7 +88,7 @@
     </main>
 
     <article class="add-fix-delete">
-        <a href="index.php?action=add_infor"><input type="button" value="Nhập thêm" name="btn-add"></a>
+        <a href="index.php?action=addInfor"><input type="button" value="Nhập thêm" name="btn-add"></a>
     </article>
 </section>
 
