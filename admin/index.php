@@ -1,9 +1,9 @@
 <?php
+include "header.php";
+
 include "../DAO/PDO.php";
 
 include "../DAO/information_DAO.php";
-
-include "header.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -20,13 +20,10 @@ if (isset($_GET['action'])) {
                 $address = $_POST['address'];
 
                 $facebook = $_FILES['facebook']['name'];
-                $urlFacebook = $_POST['url_facebook'];
 
                 $instagram = $_FILES['instagram']['name'];
-                $urlInstagram = $_POST['url_instagram'];
 
                 $youtube = $_FILES['youtube']['name'];
-                $urlYoutube = $_POST['url_youtube'];
 
                 $target_dir = "../upload/";
                 $logo = $target_dir . basename($_FILES['logo']['name']);
@@ -38,7 +35,7 @@ if (isset($_GET['action'])) {
                 } else {
                 }
 
-                addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $urlFacebook, $instagram, $urlInstagram, $youtube, $urlYoutube);
+                addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $instagram, $youtube);
 
                 $thongbao = "Thêm thông tin thành công";
 

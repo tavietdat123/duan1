@@ -38,29 +38,14 @@
             <input type="file" name="facebook" class="input-text">
             <br><br>
 
-            <label for="">Url_Facebook</label>
-            <br>
-            <input type="text" name="url_facebook" class="input-text">
-            <br><br>
-
             <label for="">img_Instagram</label>
             <br>
             <input type="file" name="instagram" class="input-text">
             <br><br>
 
-            <label for="">Url_instagram</label>
-            <br>
-            <input type="text" name="url_instagram" class="input-text">
-            <br><br>
-
             <label for="">img_Youtube</label>
             <br>
             <input type="file" name="youtube" class="input-text">
-            <br><br>
-
-            <label for="">Url_Youtube</label>
-            <br>
-            <input type="text" name="url_youtube" class="input-text">
             <br><br>
 
            <input name="add_infor" type="submit" value="THÊM MỚI" class="btn-add">

@@ -86,13 +86,10 @@
                 các dịch vụ liên quan.</span>
         </div>
     </div>
-<<<<<<< HEAD
     <script src="js/header.js"></script>
-=======
 </div>
 <script src="js/header.js"></script>
 <script src="js/sliderFlight.js"></script>
->>>>>>> 4dcd66bf995c70b8e4143453d1db455160620687
 </body>
 
 </html>

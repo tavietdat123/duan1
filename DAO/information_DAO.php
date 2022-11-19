@@ -1,7 +1,7 @@
 <?php 
-function addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $urlFacebook, $instagram, $urlInstagram, $youtube, $urlYoutube)
+function addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $instagram, $youtube)
 {
-    $sql = "insert into information(logo, url_Website, tell, email, address, facebook,url_facebook, instagram, url_instagram, youtube, url_youtube) values('$logo', '$urlWebsite', '$tell', '$email', '$address', '$facebook', '$urlFacebook', '$instagram', '$urlInstagram', '$youtube', '$urlYoutube')";
+    $sql = "insert into information(logo, url_Website, tell, email, address, facebook, instagram, youtube) values('$logo', '$urlWebsite', '$tell', '$email', '$address', '$facebook', '$instagram', '$youtube')";
 
     pdo_execute($sql);
 }

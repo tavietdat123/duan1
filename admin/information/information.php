@@ -11,11 +11,8 @@
                 <th>Email</th>
                 <th>Địa chỉ</th>
                 <th>img_Facebook</th>
-                <th>url_Facebook</th>
                 <th>img_Instagram</th>
-                <th>url_Instagram</th>
                 <th>img_YouTube</th>
-                <th>url_YouTube</th>
                 <th></th>
             </tr>
 
@@ -32,6 +29,7 @@
                 $facebook = "../upload/" . $facebook;
                 $instagram = "../upload/" . $instagram;
                 $youtube = "../upload/" . $youtube;
+                // var_dump($youtube);die;
 
 
                 if (is_file($logo)) {
@@ -67,20 +65,17 @@
                         <tr>
                             <td>' . $id . '</td>
                             <td>' . $img_logo . '</td>
-                            <td>' . $urlWebsite . '</td>
+                            <td>' . $url_website . '</td>
 
                             <td>' . $tell . '</td>
                             <td>' . $email . '</td>
                             <td>' . $address . '</td>
 
                             <td>' . $picture . '</td>
-                            <td>' . $urlFacebook . '</td>
 
                             <td>' . $picture1 . '</td>
-                            <td>' . $urlInstagram . '</td>
 
                             <td>' . $picture2 . '</td>
-                            <td>' . $urlYoutube . '</td>
 
                             <td><a href="' . $fix_infor . '"><input type="button" value="Sửa" name="btn-fix"></a>
                             <a href="' . $delete_infor . '"><input type="button" value="Xóa" name="btn-delete"></a></td>
