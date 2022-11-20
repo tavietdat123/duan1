@@ -53,7 +53,7 @@
                             <td>' . $youtube . '</td>
 
                             <td><a href="' . $fix_infor . '"><input type="button" value="Sửa" name="btn-fix"></a>
-                            <a href="' . $delete_infor . '"><input type="button" value="Xóa" name="btn-delete"></a></td>
+                            <a href="' . $delete_infor . '"><input type="button" value="Xóa" name="btn-delete" ></a></td>
                         
                         </tr>
                     ';

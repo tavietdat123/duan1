@@ -17,6 +17,22 @@ if (isset($_GET['action'])) {
         case 'fix_infor';
             $TITLE_NAME = "Cập nhật thông tin website";
             break;
+
+        case 'fixReview';
+            $TITLE_NAME = "Cập nhật thông tin website";
+            break;
+
+        case 'review':
+            $TITLE_NAME = "Giới thiệu website";
+            break;
+
+        case 'addReview':
+            $TITLE_NAME = "Thêm thông tin giới thiệu website";
+            break;
+
+        case 'updateReview':
+            $TITLE_NAME = "Cập nhật thông tin giới thiệu website";
+            break;
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -34,6 +50,8 @@ include "header.php";
 include "../DAO/PDO.php";
 
 include "../DAO/information_DAO.php";
+
+include "../DAO/review_DAO.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -56,9 +74,9 @@ if (isset($_GET['action'])) {
                 $youtube = $_POST['youtube'];
 
                 $target_dir = "../upload/";
-          
+
                 $logo = $target_dir . basename($_FILES['logo']['name']);
-                
+
                 if (move_uploaded_file($_FILES['logo']['tmp_name'], $logo)) {
                 } else {
                 }
@@ -66,8 +84,6 @@ if (isset($_GET['action'])) {
                 addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $instagram, $youtube);
 
                 $thongbao = "Thêm thông tin thành công";
-
-                
             }
 
             $loadAllInformation = loadAllInfor();
@@ -103,7 +119,7 @@ if (isset($_GET['action'])) {
             break;
 
         case "updateInfor":
-            
+
             if (isset($_POST['updateInfor']) && ($_POST['updateInfor'])) {
                 $updateInfor = $_POST['id'];
 
@@ -121,9 +137,9 @@ if (isset($_GET['action'])) {
                 $youtube = $_POST['youtube'];
 
                 $target_dir = "../upload/";
-          
+
                 $logo = $target_dir . basename($_FILES['logo']['name']);
-                
+
                 if (move_uploaded_file($_FILES['logo']['tmp_name'], $logo)) {
                 } else {
                 }
@@ -133,12 +149,85 @@ if (isset($_GET['action'])) {
                 // header(location: "information/information.php");
 
                 $thongbao = "Thêm thông tin website thành công";
-
-               }
+            }
 
             $loadAllInformation = loadAllInfor();
 
             include 'information/information.php';
+            break;
+
+        case 'addReview':
+
+            if (isset($_POST['addReview']) && ($_POST['addReview'])) {
+                $review = $_POST['review'];
+                $vision = $_POST['vision'];
+                $mission = $_POST['mission'];
+                $coreValues = $_POST['core_values'];
+
+                $ourProducts = $_POST['our_products'];
+
+                $professionalExperience = $_POST['professional_experience'];
+
+                addReview($review, $vision, $mission, $coreValues, $ourProducts, $professionalExperience);
+
+                $thongbao = "Thêm thông tin thành công";
+            }
+
+            $loadAllReview = loadAllReview();
+
+            include "review/addReview.php";
+            break;
+
+        case 'review':
+
+            $loadAllReview = loadAllReview();
+
+            include "review/review.php";
+            break;
+
+        case "deleteReview":
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                deleteReview($_GET['id']);
+            }
+
+            $loadAllReview = loadAllReview();
+
+            include "review/review.php";
+            break;
+
+        case "fixReview":
+
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                $loadOneReview = loadOneReview($_GET['id']);
+                extract($loadOneReview);
+            }
+
+            include 'review/updateReview.php';
+            break;
+
+        case "updateReview":
+
+            if (isset($_POST['updateReview']) && ($_POST['updateReview'])) {
+                $id = $_POST['id'];
+                $review = $_POST['review'];
+                $vision = $_POST['vision'];
+                $mission = $_POST['mission'];
+                $coreValues = $_POST['core_values'];
+
+                $ourProducts = $_POST['our_products'];
+
+                $professionalExperience = $_POST['professional_experience'];
+
+                updateReview($id, $review, $vision, $mission, $coreValues, $ourProducts, $professionalExperience);
+
+                $thongbao = "Cập nhật thông tin thành công";
+            }
+
+            $loadAllReview = loadAllReview();
+
+            include "review/review.php";
             break;
 
         case "listMembers":

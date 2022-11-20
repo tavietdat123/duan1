@@ -75,7 +75,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="index.php?action=review">
                                 <i class="bx bxs-slideshow icon"></i>
                                 <span class="text nav-text">Giới thiệu</span>
                             </a>
