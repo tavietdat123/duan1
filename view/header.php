@@ -79,7 +79,7 @@ if($user != []){
 </div>
 <?php endif ?>
 <?php if(!$boolean):?>
-                <a class="btn_login " href="/view/account/login.php"><i class="fa-regular fa-user"></i> <span>Đăng Nhập</span></a>
+                <a class="btn_login " href="../view/account/login.php"><i class="fa-regular fa-user"></i> <span>Đăng Nhập</span></a>
 <?php endif ?>
 
             </div>
@@ -90,7 +90,7 @@ if($user != []){
             <div class="nav_1">
             <?php if(!$boolean):?>
 
-                <a href="/view/account/login.php" class="nav_link"><i class="fa-regular fa-user"></i><span>Đăng Nhập</span></a>
+                <a href="../view/account/login.php" class="nav_link"><i class="fa-regular fa-user"></i><span>Đăng Nhập</span></a>
 <?php endif ?>
 
                 <?php if($boolean):?>

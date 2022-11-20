@@ -1,8 +1,8 @@
 <section class="home">
-    <div class="text">Thêm thông tin Website</div>
+    <div class="text">Cập nhật thông tin website</div>
 
     <main class="infor">
-    <form action="index.php?action=addInfor" method="post" enctype="multipart/form-data">
+    <form action="index.php?action=fixInfor" method="post" enctype="multipart/form-data">
             <label for="">ID</label>
             <br>
             <input type="number" name="id" disabled class="input-text">

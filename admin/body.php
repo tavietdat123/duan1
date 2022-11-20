@@ -1,6 +1,5 @@
 
         <section class="home">
-            <div class="text">Thông báo và tin tức</div>
 
 
         </section>

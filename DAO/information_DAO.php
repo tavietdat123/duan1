@@ -21,5 +21,4 @@ function deleteInfor($id)
     pdo_execute($sql);
 }
 
-
 ?>
