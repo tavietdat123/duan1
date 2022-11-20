@@ -42,7 +42,7 @@
                         <li class="nav-link">
                             <a href="index.php">
                                 <i class="bx bx-home-alt icon"></i>
-                                <span class="text nav-text">Thống kê</span>
+                                <span class="text nav-text">Dashboard</span>
                             </a>
                         </li>
 
@@ -77,7 +77,7 @@
                         <li class="nav-link">
                             <a href="#">
                                 <i class="bx bxs-slideshow icon"></i>
-                                <span class="text nav-text">SlideShow</span>
+                                <span class="text nav-text">Giới thiệu</span>
                             </a>
                         </li>
 
