@@ -14,6 +14,9 @@ if (isset($_GET['action'])) {
             $TITLE_NAME = "Danh sách thành viên";
             break;
 
+        case 'fix_infor';
+            $TITLE_NAME = "Cập nhật thông tin website";
+            break;
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -64,7 +67,7 @@ if (isset($_GET['action'])) {
 
                 $thongbao = "Thêm thông tin thành công";
 
-                // $thongbao = insertProduct($productName, $productPrice, $img,$describe, $idCategory);
+                
             }
 
             $loadAllInformation = loadAllInfor();
@@ -83,6 +86,55 @@ if (isset($_GET['action'])) {
 
                 deleteInfor($_GET['id']);
             }
+
+            $loadAllInformation = loadAllInfor();
+
+            include 'information/information.php';
+            break;
+
+        case "fix_infor":
+
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                $loadOneInformation = loadOneInformation($_GET['id']);
+            }
+
+            include 'information/updateInformation.php';
+            break;
+
+        case "updateInfor":
+            
+            if (isset($_POST['updateInfor']) && ($_POST['updateInfor'])) {
+                $updateInfor = $_POST['id'];
+
+                $logo = $_FILES['logo']['name'];
+
+                $urlWebsite = $_POST['url_Website'];
+                $tell = $_POST['tell'];
+                $email = $_POST['email'];
+                $address = $_POST['address'];
+
+                $facebook = $_POST['facebook'];
+
+                $instagram = $_POST['instagram'];
+
+                $youtube = $_POST['youtube'];
+
+                $target_dir = "../upload/";
+          
+                $logo = $target_dir . basename($_FILES['logo']['name']);
+                
+                if (move_uploaded_file($_FILES['logo']['tmp_name'], $logo)) {
+                } else {
+                }
+
+                updateInformation($updateInfor, $logo, $urlWebsite, $tell, $email, $address, $facebook, $instagram, $youtube);
+
+                // header(location: "information/information.php");
+
+                $thongbao = "Thêm thông tin website thành công";
+
+               }
 
             $loadAllInformation = loadAllInfor();
 
