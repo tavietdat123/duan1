@@ -30,35 +30,46 @@ if (isset($_GET['action'])) {
 }
 require_once './DAO/PDO.php';
 session_start();
-include "view/header.php";
+
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 
     switch ($action) {
         case 'experience';
-            include 'view/experience.php';
+            $PAGE = 'view/experience.php';
+            include "view/layout.php";
+            break;
+        case 'login';
+            include 'view/account/login.php';
             break;
         case 'sr';
-            include 'view/Search_Results.php';
+            $PAGE = 'view/Search_Results.php';
+            include "view/layout.php";
             break;
         case 'trips';
-            include 'view/trips.php';
+            $PAGE = 'view/trips.php';
+            include "view/layout.php";
             break;
         case 'review';
-            include 'view/review.php';
+            $PAGE = 'view/review.php';
+            include "view/layout.php";
             break;
         case 'endow';
-            include 'view/endow.php';
+            $PAGE = 'view/endow.php';
+            include "view/layout.php";
             break;
         case 'news';
-            include 'view/news.php';
+            $PAGE = 'view/news.php';
+            include "view/layout.php";
             break;
         default:
-            include "view/body.php";
+            $PAGE = "view/body.php";
+            include "view/layout.php";
             break;
     }
 } else {
-    include "view/body.php";
+    $PAGE = "view/body.php";
+    include "view/layout.php";
 }
 
-include "view/footer.php";
+

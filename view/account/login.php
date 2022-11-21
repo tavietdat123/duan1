@@ -1,6 +1,5 @@
 <?php 
-require_once "../../DAO/PDO.php";
-session_start();
+
 $rows = pdo_query("select * from account");
  if(isset($_POST['check'])){
    $username_dn = $_POST['username_dn'];
@@ -43,8 +42,8 @@ $rows = pdo_query("select * from account");
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/datstyle.css">
+    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/datstyle.css">
 
 </head>
 <body>
