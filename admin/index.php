@@ -33,6 +33,14 @@ if (isset($_GET['action'])) {
         case 'updateReview':
             $TITLE_NAME = "Cập nhật thông tin giới thiệu website";
             break;
+
+        case 'fixMember':
+            $TITLE_NAME = "Cập nhật tài khoản thành viên";
+            break;
+
+        case 'addMember':
+            $TITLE_NAME = "Thêm tài khoản thành viên";
+            break;
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -232,6 +240,17 @@ if (isset($_GET['action'])) {
 
         case "listMembers":
             include 'members/listMember.php';
+
+        // case "deleteMember":
+        //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+        //         deleteMember($_GET['id']);
+        //     }
+
+        //     $loadAllReview = loadAllReview();
+
+        //     include "review/review.php";
+        //     break;
 
         default:
             include "body.php";

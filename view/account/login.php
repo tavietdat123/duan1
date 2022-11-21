@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 $rows = pdo_query("select * from account");
  if(isset($_POST['check'])){
    $username_dn = $_POST['username_dn'];
@@ -77,7 +76,7 @@ $rows = pdo_query("select * from account");
             </svg>
             <h4 >Đăng Nhập</h4>
         </div>
-            <a class="login_header_link" href="/flight.html">Quay về trang chủ <i class="fa-solid fa-right"></i></a>
+            <a class="login_header_link" href="index.php">Quay về trang chủ <i class="fa-solid fa-right"></i></a>
         </div>
         
     </div>
@@ -114,7 +113,7 @@ $rows = pdo_query("select * from account");
                 <div class="login_form_heading">
                     <h4>Đăng Nhập</h4>
                 </div>
-                <form action="./login.php" method="POST" class=" d-flex flex-column">
+                <form action="index.php?action=login" method="POST" class=" d-flex flex-column">
                 <input type="text" name="username_dn" placeholder="Nhập Email..." value="<?php if(isset($username_dn)){echo$username_dn;} ?>">
                 <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"><?php if(isset($errortk_dn)){echo$errortk_dn;} ?></p>
                 <input type="password" name="password_dn" placeholder="Nhập Password..." value="<?php if(isset($password_dn)){echo$password_dn;} ?>">
@@ -122,7 +121,7 @@ $rows = pdo_query("select * from account");
                 <button name="check">Đăng Nhập</button>
             </form>
                 <div class="login_sp d-flex justify-content-between mt-2 mb-1">
-                    <a href="">Quên mật khẩu</a>
+                    <a href="index.php?action=forgotPassword">Quên mật khẩu</a>
                     <a href="">Đăng nhập bằng SMS</a>
                 </div>
                 <div class="login_form_line d-flex align-items-center mt-2">
@@ -139,7 +138,7 @@ $rows = pdo_query("select * from account");
                     <button class="login_form_social_1"><i class="fa-brands fa-apple"></i>Apple</button>
                 </div>
                 <div class="login_form_register">
-                    <p>Bạn mới biết đến Momondo? <a href="./register.php">Đăng Ký</a></p>
+                    <p>Bạn mới biết đến Momondo? <a href="index.php?action=register">Đăng Ký</a></p>
                 </div>
             </div>
     </div>
@@ -153,7 +152,7 @@ $rows = pdo_query("select * from account");
                         <h5>Công Ty</h5>
                     </div>
                     <ul class="footer_list">
-                        <li><a href="" class="footer_list_link">Về</a></li>
+                        <li><a href="" class="footer_list_link">Về chúng tôi</a></li>
                         <li><a href="" class="footer_list_link">Nghề Nghiệp</a></li>
                         <li><a href="" class="footer_list_link">Di động</a></li>
                         <li><a href="" class="footer_list_link">Phát Hiện</a></li>

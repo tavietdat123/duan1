@@ -13,9 +13,13 @@
             </tr>
 
             <?php
-
+            $rows = pdo_query("select * from account");
             foreach ($rows as $loadAll) {
                 extract($loadAll);
+
+                $fixMember = "index.php?action=fixMember&id=" . $id;
+
+                $deleteMember = "index.php?action=deleteMember&id=" . $id;
 
                 echo '
                         <tr>
@@ -25,8 +29,8 @@
                             <td>' . $email . '</td>
                             <td>' . $role . '</td>
 
-                            <td><a href="' . $fix_member . '"><input type="button" value="Sửa" name="btn-fix"></a>
-                            <a href="' . $delete_member . '"><input type="button" value="Xóa" name="btn-delete"></a></td>
+                            <td><a href="' . $fixMember . '"><input type="button" value="Sửa" name="btn-fix"></a>
+                            <a href="' . $deleteMember . '"><input type="button" value="Xóa" name="btn-delete"></a></td>
                         
                         </tr>
                     ';

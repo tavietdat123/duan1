@@ -1,5 +1,5 @@
 <?php
-require_once '../../DAO/PDO.php';
+// require_once '../../DAO/PDO.php';
 $sql = pdo_query('select * from account');
 
 if (isset($_POST['check'])) {
@@ -55,8 +55,8 @@ if (isset($_POST['check'])) {
     <title>Đăng ký</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/datstyle.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/datstyle.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -88,7 +88,7 @@ if (isset($_POST['check'])) {
                 </svg>
                 <h4>Đăng Ký</h4>
             </div>
-            <a class="login_header_link" href="/index.php">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
+            <a class="login_header_link" href="index.php">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
         </div>
 
 
@@ -123,7 +123,7 @@ if (isset($_POST['check'])) {
             <div class="login_form_heading">
                 <h4>Đăng Ký</h4>
             </div>
-            <form action="" method="post" class=" d-flex flex-column">
+            <form action="index.php?action=register" method="post" class=" d-flex flex-column">
                 <input type="text" placeholder="Nhập Email..." name="emailphone_dk" value="<?php if (isset($emailphone_dk)) {                                                                                   echo $emailphone_dk;
                 } ?>">
                 <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"><?php if (isset($errorem)) {                                                                                   echo $errorem;
@@ -166,7 +166,7 @@ if (isset($_POST['check'])) {
                 <p>Bằng việc đăng ký, bạn đã đồng ý với Momondo về <br> <a href="">điều khoản dịch vụ</a> & <a href="">chính sách bảo mật</a></p>
             </div>
             <div class="login_form_register mb-0 mt-4">
-                <p>Bạn đã có tài khoản <a href="login.php">Đăng Nhập</a></p>
+                <p>Bạn đã có tài khoản <a href="index.php?action=login">Đăng Nhập</a></p>
             </div>
         </div>
     </div>

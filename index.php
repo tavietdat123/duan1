@@ -42,6 +42,9 @@ if (isset($_GET['action'])) {
         case 'login';
             include 'view/account/login.php';
             break;
+        case 'register';
+            include 'view/account/register.php';
+            break;
         case 'sr';
             $PAGE = 'view/Search_Results.php';
             include "view/layout.php";

@@ -1,5 +1,4 @@
 <?php
-
 $boolean=false;
 if(isset($_SESSION['client'])){
 $email = $_SESSION['client'];
