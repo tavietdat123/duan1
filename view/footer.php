@@ -1,4 +1,5 @@
 <div class="footer">
+    <script src="https://uhchat.net/code.php?f=0e91e0"></script>
     <div class="container_footer">
         <div class="row">
             <div class="col-3">
