@@ -20,6 +20,15 @@ if (isset($_GET['action'])) {
         case 'news';
             $TITLE_NAME = "Tin Tức";
             break;
+        case 'login';
+            $TITLE_NAME = "Đăng nhập";
+            break;
+        case 'register';
+            $TITLE_NAME = "Đăng kí";
+            break;
+        case 'forgotPassword';
+            $TITLE_NAME = "Quên mật khẩu";
+            break;
         default:
             $TITLE_NAME = "Chuyến bay";
             break;
@@ -39,32 +48,45 @@ if (isset($_GET['action'])) {
             $PAGE = 'view/experience.php';
             include "view/layout.php";
             break;
+
         case 'login';
             include 'view/account/login.php';
             break;
+
         case 'register';
             include 'view/account/register.php';
             break;
+
+        case 'forgotPassword';
+
+            include 'view/account/forgotPassword.php';
+            break;
+
         case 'sr';
             $PAGE = 'view/Search_Results.php';
             include "view/layout.php";
             break;
+
         case 'trips';
             $PAGE = 'view/trips.php';
             include "view/layout.php";
             break;
+
         case 'review';
             $PAGE = 'view/review.php';
             include "view/layout.php";
             break;
+
         case 'endow';
             $PAGE = 'view/endow.php';
             include "view/layout.php";
             break;
+
         case 'news';
             $PAGE = 'view/news.php';
             include "view/layout.php";
             break;
+
         default:
             $PAGE = "view/body.php";
             include "view/layout.php";

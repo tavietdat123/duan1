@@ -13,8 +13,8 @@
             </tr>
 
             <?php
-            $rows = pdo_query("select * from account");
-            foreach ($rows as $loadAll) {
+            // $rows = pdo_query("select * from account");
+            foreach ($loadAllMembers as $loadAll) {
                 extract($loadAll);
 
                 $fixMember = "index.php?action=fixMember&id=" . $id;
