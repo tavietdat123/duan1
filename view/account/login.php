@@ -7,7 +7,7 @@ $rows = pdo_query("select * from account");
  foreach ($rows as $key => $value) {
    if(isset($username_dn) && isset($password_dn)){
     $check_pass=password_verify($password_dn,$value['passWord']);
-    if($value['email'] == $username_dn && $check_pass){
+    if($value['email'] == $username_dn && $check_pass && $value['status'] ==0 ){
            if($value['role']== 1){
               $_SESSION['client']= $value['email'];
              header("location: /index.php");
@@ -17,9 +17,12 @@ $rows = pdo_query("select * from account");
             $_SESSION['admin']= $value['email'];
             header("location: ../admin/index.php");
            }
-       }elseif(!($value['email'] == $username_dn) || !($check_pass)){
+       }elseif(!($value['email'] == $username_dn) || !($check_pass )){
            $errormkall_dn = "Tài khoản hoặc mật khẩu không chính xác";
            
+       }
+       if($value['status'] == 1){
+        $errormkall_dn = "Tài khoản đã bị khóa";
        }
    }
  }

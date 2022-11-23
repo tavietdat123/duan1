@@ -21,21 +21,20 @@ $row = pdo_query_one("select * from account where email = '$email'");
                 $errormk ="Mật khẩu ít nhất 6 kí tự";
             }elseif($password_new == $password_dk){
                 $errormk ="Mật khẩu không được trùng với mật khẩu hiện tại";
-
             }
-                if($re_password_dk == "") {
+            if($re_password_dk == "") {
                     $errorremk =  "Nhập lại mật khẩu mới không trùng khớp";
-                }elseif(!($re_password_dk == $password_dk)){
+            }elseif(!($re_password_dk == $password_dk)){
                     $errorremk =  "Nhập lại mật khẩu mới không trùng khớp";
-                }
-
+            }
 if( !isset($errorem) && !isset($errormk)&& !isset($errorremk)){
     $create_user ="update account set passWord = '$password_dk' where email = '$email'";
     pdo_execute($create_user);
     echo"<script>alert(Đổi mật khẩu thành công);</script>";
     header("location: /index.php");
 
-}}
+}
+}
 
 ?>
 <!DOCTYPE html>

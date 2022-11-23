@@ -8,6 +8,7 @@ if (isset($_POST['check'])) {
     $password_dk = $_POST['password_dk'];
     $re_password_dk = $_POST['re_password_dk'];
     $role = 1;
+    $status = 0;
     $checktk = 0;
     foreach ($sql as $key => $value) {
         if (isset($emailphone_dk)) {
@@ -41,8 +42,8 @@ if (isset($_POST['check'])) {
             $password_dk,
             PASSWORD_BCRYPT,
         );
-        $create_user = "INSERT INTO account (fullName,password,email,role)" .
-            "VALUES ('$username_dk','$password_hash','$emailphone_dk',$role)";
+        $create_user = "INSERT INTO account (fullName,password,email,role,status)" .
+            "VALUES ('$username_dk','$password_hash','$emailphone_dk',$role,$status)";
         pdo_execute($create_user);
         header("location: login.php");
     }
