@@ -1,6 +1,10 @@
 <section class="home">
     <div class="text">Thông tin Website</div>
 
+    <article class="add-fix-delete">
+        <a href="index.php?action=addInfor"><input type="button" value="Nhập thêm" name="btn-add"></a>
+    </article>
+
     <main class="sms">
         <table border=1>
             <tr>
@@ -62,9 +66,7 @@
         </table>
     </main>
 
-    <article class="add-fix-delete">
-        <a href="index.php?action=addInfor"><input type="button" value="Nhập thêm" name="btn-add"></a>
-    </article>
+
 </section>
 
 

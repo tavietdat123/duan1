@@ -10,7 +10,7 @@ $rows = pdo_query("select * from account");
     if($value['email'] == $username_dn && $check_pass && $value['status'] ==0 ){
            if($value['role']== 1){
               $_SESSION['client']= $value['email'];
-             header("location: /index.php");
+             header("location: index.php");
              break;
               
            }else{

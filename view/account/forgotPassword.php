@@ -1,71 +1,91 @@
 <?php
-$loi ="";
+// include "../DAO/PDO.php";
 
-if (isset($_POST['nutguiyeucau']) == true) {
-    $email = $_POST['email'];
+// // session_start();
 
-    $connect = new PDO("mysql:host=localhost;dbname=duan1;charset=utf8", "root", "");
-    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql ="SELECT * FROM account WHERE email =?";
-    $stmt =$connect->prepare($sql);
-    $stmt->execute([$email]);
-    $count =$stmt->rowCount();
+// if (isset($_POST['nutguiyeucau']) == true) {
+//     $email = $_POST['email'];
 
-    if($count==0){
-        $loi ="Email bạn nhập chưa đăng kí thành viên với chúng tôi";
-    }else{ 
-      $matkhaumoi =  substr(md5 (rand(0,99999)), 0, 8);
-      $sql ="UPDATE account SET `passWord` = ? WHERE email =?";
-      $stmt =$connect->prepare($sql);
-      $stmt->execute([$matkhaumoi, $email]);
-    //   echo "Đã cập nhật";
-    
-    $kq = Guimail($email, $matkhaumoi);
+//     $dburl = "mysql:host=127.0.0.1;dbname=duan1;charset=utf8";
+//     $username = 'root';
+//     $password = '';
 
-    if($kq==true){
-        header("location: login.php");
-    }
-    }
-}
+//     $connect = new PDO($dburl, $username, $password);
+//     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     $sql = "SELECT * FROM account WHERE email =?";
+//     $stmt = $connect->prepare($sql);
+//     $stmt->execute([$email]);
+//     $count = $stmt->rowCount();
+
+//     if ($count == 0) {
+//         $loi = "Email bạn nhập chưa đăng kí thành viên với chúng tôi";
+//     } else {
+//         $matkhaumoi =  substr(md5(rand(0, 99999)), 0, 8);
+//         $sql = "UPDATE account SET `passWord` = ? WHERE email =?";
+//         $stmt = $connect->prepare($sql);
+//         $stmt->execute([$matkhaumoi, $email]);
+//         //   echo "Đã cập nhật";
+
+        
+// // $matkhaumoi =  substr(md5(rand(0, 99999)), 0, 8);
+// // echo $matkhaumoi;
+// //Import PHPMailer classes into the global namespace
+// require 'PHPMailer-master/src/Exception.php';
+// require 'PHPMailer-master/src/PHPMailer.php';
+// require 'PHPMailer-master/src/SMTP.php';
+// //These must be at the top of your script, not inside a function
+// // use PHPMailer\PHPMailer\PHPMailer;
+// // use PHPMailer\PHPMailer\SMTP;
+// // use PHPMailer\PHPMailer\Exception;
+
+// //Load Composer's autoloader
+// // require 'vendor/autoload.php';
+
+// //Create an instance; passing `true` enables exceptions
+// $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+
+// try {
+//     //Server settings
+//     $mail->SMTPDebug = PHPMailer\PHPMailer\SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+//     $mail->isSMTP();                                            //Send using SMTP
+//     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+//     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+//     $mail->Username   = 'nguyenngoclinhphuong.nnlp@gmail.com';                     //SMTP username
+//     $mail->Password   = 'hswwbwcusyfnubkw';                               //SMTP password
+//     $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+//     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+//     //Recipients
+//     $mail->setFrom('nguyenngoclinhphuong.nnlp@gmail.com', 'Admin');
+//     // $mail->addAddress('nguyenngoclinhphuong.nnlp@gmail.com', 'Admin');     //Add a recipient
+//     $mail->addAddress('thanhntph20216@fpt.edu.vn');               //Name is optional
+//     // $mail->addReplyTo('info@example.com', 'Information');
+//     // $mail->addCC('cc@example.com');
+//     // $mail->addBCC('bcc@example.com');
+
+//     //Attachments
+//     //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+//     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+//     //Content
+//     $mail->isHTML(true);                                  //Set email format to HTML
+//     $mail->Subject = 'Here is the subject';
+//     $mail->Body    = "This is the HTML message body <b>$matkhaumoi</b>";
+//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+//     $mail->send();
+//     echo 'Message has been sent';
+// } catch (PHPMailer\PHPMailer\Exception $e) {
+//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// }
+//     }
+// }
 ?>
 
-<?php 
-    function Guimail($email, $matkhaumoi){ 
-        require "PHPMailer-master/src/PHPMailer.php"; 
-    require "PHPMailer-master/src/SMTP.php"; 
-    require 'PHPMailer-master/src/Exception.php'; 
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
-    try {
-        $mail->SMTPDebug = 0; //0,1,2: chế độ debug
-        $mail->isSMTP();  
-        $mail->CharSet  = "utf-8";
-        $mail->Host = 'smtp.gmail.com';  //SMTP servers
-        $mail->SMTPAuth = true; // Enable authentication
-        $mail->Username = 'nguyenngoclinhphuong.nnlp@gmail.com'; // SMTP username
-        $mail->Password = 'Thanh2003@';   // SMTP password
-        $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
-        $mail->Port = 465;  // port to connect to                
-        $mail->setFrom('nguyenngoclinhphuong.nnlp@gmail.com', 'Admin' ); 
-        $mail->addAddress('$email'); 
-        $mail->isHTML(true);  // Set email format to HTML
-        $mail->Subject = 'Thư gửi lại mật khẩu.';
-        $noidungthu = "<p>Mật khẩu mới của bạn là: {$matkhaumoi}</p>"; 
-        $mail->Body = $noidungthu;
-        $mail->smtpConnect( array(
-            "ssl" => array(
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-                "allow_self_signed" => true
-            )
-        ));
-        $mail->send();
-        echo 'Đã gửi mail xong';
-        return true;
-    } catch (Exception $e) {
-        echo 'Error: ', $mail->ErrorInfo;
-        return false;
-    }
-    }
+<?php
+function Guimail(){
+    
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,8 +97,8 @@ if (isset($_POST['nutguiyeucau']) == true) {
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/datstyle.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/datstyle.css">
 
 </head>
 
@@ -110,7 +130,7 @@ if (isset($_POST['nutguiyeucau']) == true) {
                 </svg>
                 <h4>Quên mật khẩu</h4>
             </div>
-            <a class="login_header_link" href="/flight.html">Quay về trang chủ <i class="fa-solid fa-right"></i></a>
+            <a class="login_header_link" href="index.php">Quay về trang chủ <i class="fa-solid fa-right"></i></a>
         </div>
 
     </div>
@@ -144,18 +164,14 @@ if (isset($_POST['nutguiyeucau']) == true) {
             <div class="login_form_heading">
                 <h4>Quên mật khẩu</h4>
             </div>
-            <form action="./login.php" method="POST" class=" d-flex flex-column">
-                <?php 
-                    if($loi!=""){ ?>
-                        <div class="alert-danger"><?= $loi ?></div>
-                  <?php  }
-                ?>
-                <input value="<?php if (isset($email) == true) echo $email ?>" type="email" id="email" name="email" placeholder="Nhập Email...">
+            <form action="index.php?action=forgotPassword" method="POST" class=" d-flex flex-column">
+
+                <input value="<?php if (isset($email)) echo $email ?>" type="email" id="email" name="email" placeholder="Nhập Email...">
                 <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300"></p>
                 <button name="nutguiyeucau">Gửi thông tin</button>
             </form>
             <div class="login_sp d-flex justify-content-between mt-2 mb-1">
-                <a href="">Đăng nhập</a>
+                <a href="index.php?action=login">Đăng nhập</a>
                 <a href="">Đăng nhập bằng SMS</a>
             </div>
             <div class="login_form_line d-flex align-items-center mt-2">
@@ -172,7 +188,7 @@ if (isset($_POST['nutguiyeucau']) == true) {
                 <button class="login_form_social_1"><i class="fa-brands fa-apple"></i>Apple</button>
             </div>
             <div class="login_form_register">
-                <p>Bạn mới biết đến Momondo? <a href="./register.php">Đăng Ký</a></p>
+                <p>Bạn mới biết đến Momondo? <a href="index.php?action=register">Đăng Ký</a></p>
             </div>
         </div>
     </div>

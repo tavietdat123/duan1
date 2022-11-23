@@ -9,6 +9,9 @@ if (isset($_GET['action'])) {
         case 'information';
             $TITLE_NAME = "Thông tin website";
             break;
+        case 'updateInfor';
+            $TITLE_NAME = "Thông tin website";
+            break;
 
         case 'listMembers';
             $TITLE_NAME = "Danh sách thành viên";
@@ -25,6 +28,9 @@ if (isset($_GET['action'])) {
         case 'review':
             $TITLE_NAME = "Giới thiệu website";
             break;
+        case 'updateReview':
+            $TITLE_NAME = "Giới thiệu website";
+            break;
 
         case 'addReview':
             $TITLE_NAME = "Thêm thông tin giới thiệu website";
@@ -37,10 +43,19 @@ if (isset($_GET['action'])) {
         case 'fixMember':
             $TITLE_NAME = "Cập nhật tài khoản thành viên";
             break;
-
-        case 'addMember':
-            $TITLE_NAME = "Thêm tài khoản thành viên";
+        case 'updateMember':
+            $TITLE_NAME = "Danh sách thành viên";
             break;
+        case 'news':
+            $TITLE_NAME = "Danh sách tin tức";
+            break;
+        case 'fixNews':
+            $TITLE_NAME = "Danh sách thành viên";
+            break;
+        case 'updateNews':
+            $TITLE_NAME = "Danh sách tin tức";
+            break;
+
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -60,6 +75,10 @@ include "../DAO/PDO.php";
 include "../DAO/information_DAO.php";
 
 include "../DAO/review_DAO.php";
+
+include "../DAO/members_DAO.php";
+
+include "../DAO/news_DAO.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -239,19 +258,169 @@ if (isset($_GET['action'])) {
             break;
 
         case "listMembers":
+
+            $loadAllMembers = loadAllMembers();
+
+            include 'members/listMember.php';
+            break;
+
+        case "deleteMember":
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                deleteMember($_GET['id']);
+            }
+
+            $loadAllMembers = loadAllMembers();
+
             include 'members/listMember.php';
 
-        // case "deleteMember":
-        //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            break;
 
-        //         deleteMember($_GET['id']);
-        //     }
+        case "fixMember":
 
-        //     $loadAllReview = loadAllReview();
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 
-        //     include "review/review.php";
-        //     break;
+                $loadOneMember = loadOneMember($_GET['id']);
+                extract($loadOneMember);
+            }
 
+            include 'members/updateMember.php';
+            break;
+
+        case 'updateMember':
+            if (isset($_POST['updateMember']) && ($_POST['updateMember'])) {
+                $id = $_POST['id'];
+                $fullName = $_POST['fullName'];
+                $passWord = $_POST['passWord'];
+                $email = $_POST['email'];
+                $role = $_POST['role'];
+
+                updateMember($id, $fullName, $passWord, $email, $role);
+
+                $thongbao = "Cập nhật thông tin thành công";
+            }
+
+            $loadAllMembers = loadAllMembers();
+
+            include 'members/listMember.php';
+            break;
+
+        case 'news';
+
+            $loadAllNews = loadAllNews();
+
+            include 'news/listNews.php';
+            break;
+
+        case 'deleteNews':
+
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                deleteNews($_GET['id']);
+            }
+
+            $loadAllNews = loadAllNews();
+
+            include 'news/listNews.php';
+
+            break;
+
+        case "addNews":
+
+            //Kiểm tra xem người dùng có click vào nút Thêm mới không 
+            if (isset($_POST['addNews']) && ($_POST['addNews'])) {
+
+                $title = $_POST['title'];
+
+                $image1 = $_FILES['image1']['name'];
+                $image2 = $_FILES['image2']['name'];
+                $image3 = $_FILES['image3']['name'];
+
+                $content1 = $_POST['content1'];
+                $content2 = $_POST['content2'];
+                $content3 = $_POST['content3'];
+
+                $createdAt = date('h:i:sa d/m/Y');
+
+                $target_dir = "../upload/";
+                $target_dir1 = "../upload/";
+                $target_dir2 = "../upload/";
+
+                $image1 = $target_dir . basename($_FILES['image1']['name']);
+                $image2 = $target_dir1 . basename($_FILES['image2']['name']);
+                $image3 = $target_dir2 . basename($_FILES['image3']['name']);
+
+                if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
+                } else {
+                }
+                if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
+                } else {
+                }
+                if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
+                } else {
+                }
+
+                addNews($title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
+
+                $thongbao = "Thêm thông tin thành công";
+            }
+
+            $loadAllNews = loadAllNews();
+            include "news/addNews.php";
+            break;
+
+            case 'fixNews':
+
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                    $loadOneNews = loadOneNews($_GET['id']);
+                    extract($loadOneNews);
+                }
+                include 'news/updateNews.php';
+                break;
+
+            case 'updateNews':
+                if (isset($_POST['addNews']) && ($_POST['addNews'])) {
+
+                    $id=$_POST['id'];
+                    $title = $_POST['title'];
+    
+                    $image1 = $_FILES['image1']['name'];
+                    $image2 = $_FILES['image2']['name'];
+                    $image3 = $_FILES['image3']['name'];
+    
+                    $content1 = $_POST['content1'];
+                    $content2 = $_POST['content2'];
+                    $content3 = $_POST['content3'];
+    
+                    $createdAt = date('h:i:sa d/m/Y');
+    
+                    $target_dir = "../upload/";
+                    $target_dir1 = "../upload/";
+                    $target_dir2 = "../upload/";
+    
+                    $image1 = $target_dir . basename($_FILES['image1']['name']);
+                    $image2 = $target_dir1 . basename($_FILES['image2']['name']);
+                    $image3 = $target_dir2 . basename($_FILES['image3']['name']);
+    
+                    if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
+                    } else {
+                    }
+                    if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
+                    } else {
+                    }
+                    if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
+                    } else {
+                    }
+    
+                    updateNews($id,$title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
+    
+                    $thongbao = "Thêm thông tin thành công";
+                }
+
+                $loadAllNews = loadAllNews();
+                include 'news/listNews.php';
+                break;
         default:
             include "body.php";
             break;

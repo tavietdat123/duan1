@@ -45,7 +45,7 @@ if (isset($_POST['check'])) {
         $create_user = "INSERT INTO account (fullName,password,email,role,status)" .
             "VALUES ('$username_dk','$password_hash','$emailphone_dk',$role,$status)";
         pdo_execute($create_user);
-        header("location: login.php");
+        header("location: index.php?action=login");
     }
 }
 ?>

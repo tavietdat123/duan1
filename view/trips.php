@@ -7,18 +7,21 @@
                             kỳ dễ
                             dàng. Các chuyến đi là miễn phí - và có sẵn để sử dụng cho dù bạn đặt chỗ ở đâu.</span>
                         <div class="trips_block">
-                            <button href="#" class="trips_btn btn btn-primary " tabindex="0" role="button"
+                            <a href="index.php?action=login">
+                            <button href="index.php?action=login" class="trips_btn btn btn-primary " tabindex="0" role="button"
                                 aria-disabled="false">
                                 <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Đăng nhập để lập kế hoạch tốt hơn</font>
+                                    <font style="vertical-align: inherit;"> Đăng nhập để lập kế hoạch tốt hơn </font>
                                 </font>
                             </button>
-                            <button href="#" class="trips_btn btn btn-primary " tabindex="0" role="button"
+                            </a>
+
+                            <a href=""><button href="#" class="trips_btn btn btn-primary " tabindex="0" role="button"
                                 aria-disabled="false">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Tìm đặt chỗ chúng tôi</font>
                                 </font>
-                            </button>
+                            </button></a>
                         </div>
                 </div>
                 <div class="img_header p-2">

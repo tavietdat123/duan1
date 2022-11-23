@@ -1,43 +1,34 @@
 <?php
-function addInfor($logo, $urlWebsite, $tell, $email, $address, $facebook, $instagram, $youtube)
+
+function loadAllMembers()
 {
-    $sql = "insert into information(logo, url_Website, tell, email, address, facebook, instagram, youtube) values('$logo', '$urlWebsite', '$tell', '$email', '$address', '$facebook', '$instagram', '$youtube')";
+    $sql = "select * from account where 1 order by id desc";
+
+    $loadAllMembers = pdo_query($sql);
+
+    return $loadAllMembers;
+}
+
+function deleteMember($id)
+{
+    $sql = "delete from account where id=" . $id;
 
     pdo_execute($sql);
 }
 
-function loadAllInfor()
+function loadOneMember($id)
 {
-    $sql = "select * from information where 1 order by id desc";
+    $sql = "select * from account where id=" . $id;
 
-    $loadAllInformation = pdo_query($sql);
+    $loadOneMember = pdo_query_one($sql);
 
-    return $loadAllInformation;
+    return $loadOneMember;
 }
 
-function deleteInfor($id)
-{
-    $sql = "delete from information where id=" . $id;
-
-    pdo_execute($sql);
-}
-
-function loadOneInformation($id)
-{
-    $sql = "select * from information where id=" . $id;
-
-    $loadOneInformation = pdo_query_one($sql);
-
-    return $loadOneInformation;
-}
-
-function updateInformation($updateInfor, $logo, $urlWebsite, $tell, $email, $address, $facebook, $instagram, $youtube)
+function updateMember($id, $fullName, $passWord, $email, $role)
 {
 
-    if ($logo != "") 
-        $sql = "update information set logo='" . $logo . "', url_website='" . $urlWebsite . "', tell='" . $tell . "', email='" . $email . "', address='" . $address . "', facebook='" . $facebook . "', instagram='" . $instagram . "', youtube='" . $youtube . "' where id=" . $updateInfor;
-    else
-        $sql = "update information set url_website='" . $urlWebsite . "', tell='" . $tell . "', email='" . $email . "', address='" . $address . "', facebook='" . $facebook . "', instagram='" . $instagram . "', youtube='" . $youtube . "' where id=" . $updateInfor;
+    $sql = "update account set fullName='" . $fullName . "', passWord='" . $passWord . "', email='" . $email . "', role='" . $role . "' where id=" . $id;
     
     pdo_execute($sql);
 }
