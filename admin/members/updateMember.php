@@ -10,27 +10,32 @@
 
             <label for="">Họ và tên</label>
             <br>
-            <input type="text" name="fullName" class="input-text" value="<?php if (isset($fullName) && ($fullName != "")) echo $fullName; ?>">
+            <input type="text" name="fullName" class="input-text"
+                value="<?php if (isset($fullName) && ($fullName != "")) echo $fullName; ?>">
             <br><br>
 
             <label for="">Mật khẩu</label>
             <br>
-            <input type="text" name="passWord" class="input-text" value="<?php if (isset($passWord) && ($passWord != "")) echo $passWord; ?>">
+            <input type="text" name="passWord" class="input-text"
+                value="<?php if (isset($passWord) && ($passWord != "")) echo $passWord; ?>">
             <br><br>
 
             <label for="">Email</label>
             <br>
-            <input type="email" name="email" class="input-text" value="<?php if (isset($email) && ($email != "")) echo $email; ?>">
+            <input type="email" name="email" class="input-text"
+                value="<?php if (isset($email) && ($email != "")) echo $email; ?>">
             <br><br>
 
-            <label for="">Role</label>
+            <label for="">Chức vụ</label>
             <br>
-            <input type="number" name="role" class="input-text" value="<?php if (isset($role) && ($role != "")) echo $role; ?>">
+            <input type="number" name="role" class="input-text"
+                value="<?php if (isset($role) && ($role != "")) echo $role; ?>">
             <br><br>
 
             <input type="hidden" name="id" value="<?php if (isset($id) && ($id > 0)) echo $id; ?>">
 
-            <input name="updateMember" type="submit" value="CẬP NHẬT" class="btn-add" onclick="return confirm('Bạn có muốn cập nhật không ?')">
+            <input name="updateMember" type="submit" value="CẬP NHẬT" class="btn-add"
+                onclick="return confirm('Bạn có muốn cập nhật không ?')">
 
             <input type="reset" value="NHẬP LẠI" class="btn-reset">
 

@@ -24,7 +24,9 @@ if (isset($_GET['action'])) {
         case 'fixReview';
             $TITLE_NAME = "Cập nhật thông tin website";
             break;
-
+        case 'list_endow';
+            $TITLE_NAME = "Danh sách ưu đãi ";
+            break;
         case 'review':
             $TITLE_NAME = "Giới thiệu website";
             break;
@@ -79,6 +81,8 @@ include "../DAO/review_DAO.php";
 include "../DAO/members_DAO.php";
 
 include "../DAO/news_DAO.php";
+
+include "../DAO/endow_DAO.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -304,7 +308,25 @@ if (isset($_GET['action'])) {
 
             include 'members/listMember.php';
             break;
-
+            
+        case 'onpen_user':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $status = 0;
+                updateStatus($id,$status);
+            }
+            $loadAllMembers = loadAllMembers();
+            include 'members/listMember.php';
+            break;
+        case 'lock_user':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $status = 1;
+                updateStatus($id,$status);
+            }
+            $loadAllMembers = loadAllMembers();
+            include 'members/listMember.php';
+            break;
         case 'news';
 
             $loadAllNews = loadAllNews();
@@ -421,6 +443,10 @@ if (isset($_GET['action'])) {
                 $loadAllNews = loadAllNews();
                 include 'news/listNews.php';
                 break;
+            case 'endow':
+                $loaAllEndow = loadAllEndow();
+                    include 'endow/list_endow.php';
+                    break;
         default:
             include "body.php";
             break;

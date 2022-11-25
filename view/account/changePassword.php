@@ -12,7 +12,7 @@ $row = pdo_query_one("select * from account where email = '$email'");
 
             if($password_new == "") {
                 $errorem = "Bạn chưa nhập Mật khẩu";
-            }elseif(!($row['passWord'] == $password_new)){
+            }elseif(!($check_pass)){
                 $errorem="Mật khẩu không trùng khớp";
                      } 
             if($password_dk == "") {

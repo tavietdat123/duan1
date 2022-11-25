@@ -19,8 +19,8 @@
             <header>
                 <div class="image-text">
                     <span class="image">
-              <img src="../img/hackerIt.jpeg" alt="" />
-            </span>
+                        <img src="../img/hackerIt.jpeg" alt="" />
+                    </span>
 
                     <div class="text logo-text">
                         <span class="name">Xin chào</span>
@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="index.php?action=endow">
                                 <i class="bx bxs-party icon"></i>
                                 <span class="text nav-text">Ưu đãi</span>
                             </a>

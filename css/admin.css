@@ -384,3 +384,11 @@ section.home div.text {
  ::-webkit-scrollbar-thumb:hover {
     background: var(--toggle-color);
 }
+/* list_endow */
+.list_endow_tao_endow button{
+    width: 15%;
+    margin-left: 3.5%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}

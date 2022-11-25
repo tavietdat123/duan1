@@ -32,5 +32,11 @@ function updateMember($id, $fullName, $passWord, $email, $role)
     
     pdo_execute($sql);
 }
+function updateStatus($id,$status)
+{
 
+    $sql = "update account set status='" . $status . "' where id=" . $id;
+    
+    pdo_execute($sql);
+}
 ?>
