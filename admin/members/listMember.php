@@ -29,9 +29,9 @@
                     $check_button_status = 'ADMIN';
                 }else{
                 if($status==0){
-                $check_button_status = '<a href="' . $lock_user . '"><input type="button" value="Khóa tài khoản"></a>';
+                $check_button_status = '<a href="' . $lock_user . '"><input type="button" style = "width: 75%;" class="btn-add" value="Khóa tài khoản"></a>';
                 }else{
-                $check_button_status = '<a href="' . $open_user . '"><input type="button" value="Mở khóa tài khoản"></a>';
+                $check_button_status = '<a href="' . $open_user . '"><input type="button" style = "width: 75%;" class="btn-add" value="Mở khóa tài khoản"></a>';
                 }
             }
                 //check_role
@@ -49,8 +49,9 @@
                             <td>' . $email . '</td>
                             <td>' . $check_role . '</td>
                             <td>' . $check_button_status . '</td>
-                            <td><a href="' . $fixMember . '"><input type="button" value="Sửa" name="btn-fix"></a>
-                            <a href="' . $deleteMember . '"><input type="button" value="Xóa" name="btn-delete"></a></td>
+                            <td><a href="' . $fixMember . '"><input type="button" value="Sửa" style = "width: 50px;" class="btn-add name="btn-fix"></a>
+                            <br><br>
+                            <a href="' . $deleteMember . '"><input type="button" value="Xóa" style = "width: 50px;" class="btn-add name="btn-delete"></a></td>
                         </tr>
                     ';
             }

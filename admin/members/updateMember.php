@@ -5,12 +5,13 @@
         <form action="index.php?action=updateMember" method="post" enctype="multipart/form-data">
             <label for="">ID</label>
             <br>
-            <input type="number" name="id" disabled class="input-text">
+            <input type="number" name="id" disabled class="input-text"
+                value="<?php if (isset($id) && ($id != "")) echo $id; ?>">
             <br><br>
 
             <label for="">Họ và tên</label>
             <br>
-            <input type="text" name="fullName" class="input-text"
+            <input type=" text" name="fullName" class="input-text"
                 value="<?php if (isset($fullName) && ($fullName != "")) echo $fullName; ?>">
             <br><br>
 
@@ -28,8 +29,17 @@
 
             <label for="">Chức vụ</label>
             <br>
-            <input type="number" name="role" class="input-text"
-                value="<?php if (isset($role) && ($role != "")) echo $role; ?>">
+            <?php
+            
+            $check_role =''; 
+            if($role == 0){
+            $check_role = 'Admin';
+        }else if($role == 1){
+            $check_role = 'Thành viên';
+        }
+            ?>
+            <input type="text" name="check_role" class="input-text"
+                value="<?php if (isset($role) && ($role != "")) echo $check_role; ?>">
             <br><br>
 
             <input type="hidden" name="id" value="<?php if (isset($id) && ($id > 0)) echo $id; ?>">

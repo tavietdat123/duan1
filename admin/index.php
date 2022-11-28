@@ -27,6 +27,22 @@ if (isset($_GET['action'])) {
         case 'list_endow';
             $TITLE_NAME = "Danh sách ưu đãi ";
             break;
+        case 'addEndow';
+            $TITLE_NAME = "Tạo ưu đãi ";
+            break;
+        case 'suaEndow';
+            $TITLE_NAME = "Cập nhật ưu đãi ";
+            break;
+        case 'updateEndow';
+            $TITLE_NAME = "Cập nhật ưu đãi ";
+            break;
+            
+        case 'onpen_endow';
+            $TITLE_NAME = "Tạo ưu đãi ";
+            break;
+         case 'lock_endow';
+            $TITLE_NAME = "Tạo ưu đãi ";
+            break;
         case 'review':
             $TITLE_NAME = "Giới thiệu website";
             break;
@@ -297,11 +313,17 @@ if (isset($_GET['action'])) {
                 $fullName = $_POST['fullName'];
                 $passWord = $_POST['passWord'];
                 $email = $_POST['email'];
-                $role = $_POST['role'];
-
+                $check_role = $_POST['check_role'];
+                if($check_role == 'Admin'){
+                 $role = 0;
+                }else if($check_role == 'Thành viên'){
+                   $role =1;
+                }else{
+                    $role =0;
+                }
                 updateMember($id, $fullName, $passWord, $email, $role);
 
-                $thongbao = "Cập nhật thông tin thành công";
+                // $thongbao = "Cập nhật thông tin thành công";
             }
 
             $loadAllMembers = loadAllMembers();
@@ -443,10 +465,75 @@ if (isset($_GET['action'])) {
                 $loadAllNews = loadAllNews();
                 include 'news/listNews.php';
                 break;
-            case 'endow':
-                $loaAllEndow = loadAllEndow();
+            case 'list_endow':
+                $loadAllEndow = loadAllEndow();
                     include 'endow/list_endow.php';
                     break;
+            case 'taoEndow':
+                include "endow/tao_endow.php";
+                break;
+            case 'addEndow':
+            if (isset($_POST['addEndow']) && ($_POST['addEndow'])) {
+                $NameCode = $_POST['NameCode'];
+                $CodeEndow = $_POST['CodeEndow'];
+                $AmountEndow = $_POST['AmountEndow'];
+                $MoneyEndow = $_POST['MoneyEndow'];
+                $PercentEndow = $_POST['PercentEndow'];
+                addEndow($NameCode,$CodeEndow,$AmountEndow,$MoneyEndow,$PercentEndow);
+            }
+            $loadAllEndow = loadAllEndow();
+            include "endow/list_endow.php";
+            break;
+            
+            case "suaEndow":
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                $loadOneEndow = loadOneEndow($_GET['id']);
+                extract($loadOneEndow);
+            }
+            include 'endow/update_endow.php';
+            break;
+            case 'updateEndow':
+            if (isset($_POST['updateEndow']) && ($_POST['updateEndow'])) {
+                $id = $_POST['id'];
+                $NameCode = $_POST['NameCode'];
+                $CodeEndow = $_POST['CodeEndow'];
+                $AmountEndow = $_POST['AmountEndow'];
+                $MoneyEndow = $_POST['MoneyEndow'];
+                $PercentEndow = $_POST['PercentEndow'];
+                updateEndow($id, $NameCode,$CodeEndow,$AmountEndow,$MoneyEndow,$PercentEndow);
+            }
+            $loadAllEndow = loadAllEndow();
+            include 'endow/list_endow.php';
+            break;
+            case 'xoaEndow':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                    deleteEndow($_GET['id']);
+                }
+    
+                $loadAllEndow = loadAllEndow();
+                include 'endow/list_endow.php';
+                break;
+            case 'onpen_endow':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        $id = $_GET['id'];
+                        $status = 0;
+                        updateStatusEndow($id,$status);
+                    }
+                    $loadAllEndow = loadAllEndow();
+                    include 'endow/list_endow.php';
+                    break;
+            case 'lock_endow':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        $id = $_GET['id'];
+                        $status = 1;
+                        updateStatusEndow($id,$status);
+                    }
+                    $loadAllEndow = loadAllEndow();
+                    include 'endow/list_endow.php';
+                    break;
+
         default:
             include "body.php";
             break;

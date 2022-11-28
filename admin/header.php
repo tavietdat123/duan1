@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="index.php?action=endow">
+                            <a href="index.php?action=list_endow">
                                 <i class="bx bxs-party icon"></i>
                                 <span class="text nav-text">Ưu đãi</span>
                             </a>
