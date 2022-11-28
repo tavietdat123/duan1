@@ -57,7 +57,42 @@ if (isset($_GET['action'])) {
         case 'updateNews':
             $TITLE_NAME = "Danh sách tin tức";
             break;
-
+        case  "flight":
+            $TITLE_NAME = "Quản lý - Chuyến Bay";
+            break;
+        case 'flight_fix':
+            $TITLE_NAME = "Quản lý - Chuyến Bay";
+            break;
+        case 'flight_add':
+            $TITLE_NAME = "Quản lý - Chuyến Bay";
+            break;
+        case 'flight_remove':
+            $TITLE_NAME = "Quản lý - Chuyến Bay";
+            break;
+        case "ticket":
+            $TITLE_NAME = "Quản lý - Vé";
+            break;
+        case 'ticket_fix':
+            $TITLE_NAME = "Quản lý - Vé";
+            break;
+        case  'ticket_add':
+            $TITLE_NAME = "Quản lý - Vé";
+            break;
+        case  'ticket_remove':
+            $TITLE_NAME = "Quản lý - Vé";
+            break;
+        case "ticket_type":
+            $TITLE_NAME = "Quản lý - Loại vé";
+            break;
+        case 'ticket_type_fix':
+            $TITLE_NAME = "Quản lý - Loại vé";
+            break;
+        case  'ticket_type_add':
+            $TITLE_NAME = "Quản lý - Loại vé";
+            break;
+        case  'ticket_type_remove':
+            $TITLE_NAME = "Quản lý - Loại vé";
+            break;
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -83,6 +118,9 @@ include "../DAO/members_DAO.php";
 include "../DAO/news_DAO.php";
 
 include "../DAO/endow_DAO.php";
+include "../DAO/flight_DAO.php";
+include "../DAO/ticket_DAO.php";
+include "../DAO/type_ticket_DAO.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -308,12 +346,12 @@ if (isset($_GET['action'])) {
 
             include 'members/listMember.php';
             break;
-            
+
         case 'onpen_user':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
                 $status = 0;
-                updateStatus($id,$status);
+                updateStatus($id, $status);
             }
             $loadAllMembers = loadAllMembers();
             include 'members/listMember.php';
@@ -322,7 +360,7 @@ if (isset($_GET['action'])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
                 $status = 1;
-                updateStatus($id,$status);
+                updateStatus($id, $status);
             }
             $loadAllMembers = loadAllMembers();
             include 'members/listMember.php';
@@ -391,62 +429,101 @@ if (isset($_GET['action'])) {
             include "news/addNews.php";
             break;
 
-            case 'fixNews':
+        case 'fixNews':
 
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 
-                    $loadOneNews = loadOneNews($_GET['id']);
-                    extract($loadOneNews);
+                $loadOneNews = loadOneNews($_GET['id']);
+                extract($loadOneNews);
+            }
+            include 'news/updateNews.php';
+            break;
+
+        case 'updateNews':
+            if (isset($_POST['addNews']) && ($_POST['addNews'])) {
+
+                $id = $_POST['id'];
+                $title = $_POST['title'];
+
+                $image1 = $_FILES['image1']['name'];
+                $image2 = $_FILES['image2']['name'];
+                $image3 = $_FILES['image3']['name'];
+
+                $content1 = $_POST['content1'];
+                $content2 = $_POST['content2'];
+                $content3 = $_POST['content3'];
+
+                $createdAt = date('h:i:sa d/m/Y');
+
+                $target_dir = "../upload/";
+                $target_dir1 = "../upload/";
+                $target_dir2 = "../upload/";
+
+                $image1 = $target_dir . basename($_FILES['image1']['name']);
+                $image2 = $target_dir1 . basename($_FILES['image2']['name']);
+                $image3 = $target_dir2 . basename($_FILES['image3']['name']);
+
+                if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
+                } else {
                 }
-                include 'news/updateNews.php';
-                break;
-
-            case 'updateNews':
-                if (isset($_POST['addNews']) && ($_POST['addNews'])) {
-
-                    $id=$_POST['id'];
-                    $title = $_POST['title'];
-    
-                    $image1 = $_FILES['image1']['name'];
-                    $image2 = $_FILES['image2']['name'];
-                    $image3 = $_FILES['image3']['name'];
-    
-                    $content1 = $_POST['content1'];
-                    $content2 = $_POST['content2'];
-                    $content3 = $_POST['content3'];
-    
-                    $createdAt = date('h:i:sa d/m/Y');
-    
-                    $target_dir = "../upload/";
-                    $target_dir1 = "../upload/";
-                    $target_dir2 = "../upload/";
-    
-                    $image1 = $target_dir . basename($_FILES['image1']['name']);
-                    $image2 = $target_dir1 . basename($_FILES['image2']['name']);
-                    $image3 = $target_dir2 . basename($_FILES['image3']['name']);
-    
-                    if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
-                    } else {
-                    }
-                    if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
-                    } else {
-                    }
-                    if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
-                    } else {
-                    }
-    
-                    updateNews($id,$title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
-    
-                    $thongbao = "Thêm thông tin thành công";
+                if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
+                } else {
+                }
+                if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
+                } else {
                 }
 
-                $loadAllNews = loadAllNews();
-                include 'news/listNews.php';
-                break;
-            case 'endow':
-                $loaAllEndow = loadAllEndow();
-                    include 'endow/list_endow.php';
-                    break;
+                updateNews($id, $title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
+
+                $thongbao = "Thêm thông tin thành công";
+            }
+
+            $loadAllNews = loadAllNews();
+            include 'news/listNews.php';
+            break;
+        case 'endow':
+            $loaAllEndow = loadAllEndow();
+            include 'endow/list_endow.php';
+            break;
+        case 'flight':
+            $rows = flight_select_all();
+            include 'flight/flight.php';
+            break;
+        case 'flight_add':
+            include 'flight/flight_add.php';
+            break;
+        case 'flight_remove':
+            include 'flight/flight_remove.php';
+            break;
+        case 'flight_fix':
+            include 'flight/flight_fix.php';
+            break;
+        case 'ticket':
+            $rows = selectAllTicket();
+            include 'ticket/ticket.php';
+            break;
+        case 'ticket_add':
+            include 'ticket/ticket_add.php';
+            break;
+        case 'ticket_remove':
+            include 'ticket/ticket_remove.php';
+            break;
+        case 'ticket_fix':
+            include 'ticket/ticket_fix.php';
+            break;
+        case 'ticket_type':
+            $rows = selectAllTicket_type();
+            include 'ticket_type/ticket_type.php';
+            break;
+        case 'ticket_type_add':
+            include 'ticket_type/ticket_type_add.php';
+            break;
+        case 'ticket_type_remove':
+            include 'ticket_type/ticket_type_remove.php';
+            break;
+        case 'ticket_type_fix':
+            include 'ticket_type/ticket_type_fix.php';
+            break;
         default:
             include "body.php";
             break;

@@ -7,6 +7,7 @@ if($user != []){
     $boolean = true;
 }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,7 @@ if($user != []){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/datstyle.css">
     <title><?= $TITLE_NAME?></title>
@@ -83,7 +85,7 @@ if($user != []){
 
             </div>
         </div>
-        <div class="nav d-flex flex-column">
+        <div class="nav_main d-flex flex-column">
             <div class="header_list"><button class="header_list_btn">
                     <i class="fa-solid fa-list"></i></button></div>
             <div class="nav_1">
@@ -107,6 +109,7 @@ if($user != []){
             <div class="nav_3 d-flex flex-column">
                 <a href="index.php?action=contact" class="nav_link"><i class="fa-solid fa-address-book"></i><span>Liên Hệ</span></a>
                 <a href="index.php?action=trips" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "trips" ){echo"active";}?>"><i class="fa-solid fa-plane-departure"></i><span>Các Chuyến Bay</span></a>
+                <a href="index.php?action=history" class="nav_link <?php if(isset($_GET['action']) && ($_GET['action']) == "history" ){echo"active";}?>"><i class="fa-solid fa-clock-rotate-left"></i><span>Lịch sử đặt vé</span></a>
             </div>
         </div>
     </header>

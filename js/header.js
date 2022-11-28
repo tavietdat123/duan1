@@ -1,5 +1,5 @@
 const btnHeader = document.querySelector('.header_list_btn')
-const nav = document.querySelector('.nav')
+const nav = document.querySelector('.nav_main')
 const nav_link = document.querySelectorAll('.nav_link')
 const momondo = document.querySelector('.header')
 const content = document.querySelector('.container_content')

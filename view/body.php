@@ -1,4 +1,7 @@
 
+<?php 
+$ticket_type= pdo_query("select * from ticket_type ");
+?>
 <div class="container_content">
         <div class="content">
             <div class="flight_heading">
@@ -12,12 +15,20 @@
                             <label for=""><i class="fa-solid fa-plane"></i></label>
                             <input type="text" name="s_from" placeholder="from..." required>
                         </div>
-                        <div class="search_swap">
+                        <!-- <div class="search_swap">
                             <i class="fa-solid fa-right-left"></i>
-                        </div>
+                        </div> -->
                         <div class="search_to">
                             <label for=""><i class="fa-solid fa-plane"></i></label>
                             <input type="text" name="s_to" placeholder="To..." required>
+                        </div>
+                        <div class="search_seat">
+                            <label for=""><i class="fa-solid fa-ticket"></i></label>
+                            <select id="inputState" class="form-control" name="s_seat" required>
+                                <?php foreach ($ticket_type as $key => $value):?>
+                                        <option value="<?=$value['id']?>"><?=$value['name']?></option>
+                                        <?php endforeach?>
+                                        </select>
                         </div>
                         <div class="search_timer">
                             <div class="search_timer_1">
@@ -28,6 +39,7 @@
                             </div>
                            </div>
                         </div>
+                        
                     </div>
                     <div class="search_btn">
                         <button name="check">Tìm Kiếm</button>
