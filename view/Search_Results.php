@@ -6,7 +6,7 @@ if(isset($_POST['check'])){
     $timer_1 = $_POST['timer_1'];
     $timer_2 = $_POST['timer_2'];
     $s_seat = $_POST['s_seat'];
-    $rows=  pdo_query("select * from flight where pointOfDeparture = '$s_from' and destination = '$s_to' and dateTime BETWEEN DATE('$timer_1') and DATE('$timer_2') and dateTime > CURDATE()");
+    $rows=  pdo_query("select * from flight where pointOfDeparture = '$s_from' and destination = '$s_to' and dateTime BETWEEN DATE('$timer_1') and DATE('$timer_2') and dateTime >= CURDATE()");
     if($rows != []){
         $notfound = true;
     }
@@ -43,11 +43,11 @@ if(isset($_POST['check'])){
                         </div>
                         <div class="search_timer">
                             <div class="search_timer_1">
-                                <input type="date" name="timer_1" value="<?php if(isset($timer_1)){ echo$timer_1;} ?>">
+                                <input type="datetime-local" name="timer_1" value="<?php if(isset($timer_1)){ echo$timer_1;} ?>">
                             </div>
 
                             <div class="search_timer_2" >
-                                <input type="date" value="<?php if(isset($timer_2)){ echo$timer_2;} ?>" name="timer_2">
+                                <input type="datetime-local" value="<?php if(isset($timer_2)){ echo$timer_2;} ?>" name="timer_2">
                             </div>
 
                            </div>

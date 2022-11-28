@@ -94,6 +94,7 @@ ul {
 }
 
 .nav_link {
+    background-color: #21033a;
     color: #78648a;
     height: 43px;
     margin: 2px 8px 0;
@@ -102,6 +103,7 @@ ul {
     align-items: center;
     border-radius: 5px;
     font-weight: 600;
+    border: none;
 }
 
 .nav_link:hover span,

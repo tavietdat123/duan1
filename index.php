@@ -35,7 +35,7 @@ if (isset($_GET['action'])) {
         case 'pay';
             $TITLE_NAME = "Pay-Thanh toán";
             break;
-        case 'pay';
+        case 'history';
             $TITLE_NAME = "Lịch Sử Đặt Vé";
             break;
         default:

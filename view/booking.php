@@ -31,7 +31,7 @@ if (!isset($clent_email_er) && !isset($clent_phone_er) && !isset($clent_name_er)
         pdo_execute($sql);
         $booking = pdo_query("select * from booking");
         $id_booking =  array_pop($booking)['id'];
-        echo$id_booking;
+        // echo$id_booking;
         echo"<script>
         location.href = '/index.php?action=pay&id=$id_booking'
     </script>";

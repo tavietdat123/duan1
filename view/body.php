@@ -32,10 +32,10 @@ $ticket_type= pdo_query("select * from ticket_type ");
                         </div>
                         <div class="search_timer">
                             <div class="search_timer_1">
-                                <input type="date" name="timer_1" required>
+                                <input type="datetime-local" name="timer_1" required>
                             </div>
                             <div class="search_timer_2">
-                                <input type="date" name="timer_2" required>
+                                <input type="datetime-local" name="timer_2" required>
                             </div>
                            </div>
                         </div>

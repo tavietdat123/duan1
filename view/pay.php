@@ -7,6 +7,31 @@ $flight_id = $ticket['flight_id'];
 $flight = pdo_query_one("select * from flight where id = $flight_id");
 $ticket_type_id = $ticket['type_ticket_id'];
 $ticket_type = pdo_query_one("select * from ticket_type where id = $ticket_type_id");
+
+$pointOfDeparture = $flight['pointOfDeparture'];
+$destination = $flight['destination'];
+$dateTime = $flight['dateTime'];
+$company = $ticket['company'];
+$company_img = $ticket['company_img'];
+$price = $ticket['price'];
+if(isset($_SESSION['client'])){
+    $price = $price/100 *96;
+}
+$type_ticket_id = $ticket['type_ticket_id'];
+$name = $booking['name'];
+$tell = $booking['tell'];
+$fullName = $booking['fullName'];
+$email = $booking['email'];
+$pay = 1;
+pdo_execute("INSERT INTO bill (pointOfDeparture,destination,dateTime,company,company_img,price,type_ticket_id,name,tell,fullName,email,pay) VALUES ('$pointOfDeparture','$destination','$dateTime','$company','$company_img','$price','$type_ticket_id','$name','$tell','$fullName','$email','$pay')");
+$bill = pdo_query("select * from bill");
+$bill_id =  array_pop($bill)['id'];
+echo"<script>
+setTimeout(()=>{
+let store  = JSON.parse(localStorage.getItem(history)) ?? []
+let bill = [...store,$bill_id]
+localStorage.setItem(history, JSON.stringify(bill))},1000)
+</script>"
 ?>
 <div class="container_content ">
     <div class="content ">
@@ -161,6 +186,7 @@ $ticket_type = pdo_query_one("select * from ticket_type where id = $ticket_type_
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         
             
