@@ -5,10 +5,12 @@ if(isset($_POST['check'])){
     $s_to = $_POST['s_to'];
     $timer_1 = $_POST['timer_1'];
     $timer_2 = $_POST['timer_2'];
-    $rows=  pdo_query("select * from flight where pointOfDeparture = '$s_from' and destination = '$s_to' and dateTime BETWEEN DATE('$timer_1') and DATE('$timer_2')");
+    $s_seat = $_POST['s_seat'];
+    $rows=  pdo_query("select * from flight where pointOfDeparture = '$s_from' and destination = '$s_to' and dateTime BETWEEN DATE('$timer_1') and DATE('$timer_2') and dateTime > CURDATE()");
     if($rows != []){
         $notfound = true;
     }
+    $ticket_type= pdo_query("select * from ticket_type ");
 }
 ?>
 <div class="container_content">
@@ -31,6 +33,14 @@ if(isset($_POST['check'])){
                             <label for=""><i class="fa-solid fa-plane"></i></label>
                             <input type="text" name="s_to" placeholder="To..." value="<?php if(isset($s_to)){ echo$s_to;} ?>">
                         </div>
+                        <div class="search_seat">
+                            <label for=""><i class="fa-solid fa-ticket"></i></label>
+                            <select id="inputState" class="form-control" name="s_seat" required>
+                                <?php foreach ($ticket_type as $key => $value):?>
+                                        <option value="<?=$value['id']?>" <?=$s_seat==$value['id'] ? "selected":''; ?>><?=$value['name']?></option>
+                                        <?php endforeach?>
+                                        </select>
+                        </div>
                         <div class="search_timer">
                             <div class="search_timer_1">
                                 <input type="date" name="timer_1" value="<?php if(isset($timer_1)){ echo$timer_1;} ?>">
@@ -42,6 +52,7 @@ if(isset($_POST['check'])){
 
                            </div>
                         </div>
+                        
                     </div>
                     <div class="search_btn">
                         <button name="check">Tìm Kiếm</button>
@@ -52,19 +63,20 @@ if(isset($_POST['check'])){
         <div class="sr_container ">
             <?php if($notfound): ?>
             <?php foreach ($rows as $key => $value):?>
-            <div class="sr_bd d-flex align-items-center justify-content-between bg-light mb-3">
-                <div class="sr_content d-flex align-items-center justify-content-between flex-grow-1">
-                    <div><img class="sr_img" src="https://content.r9cdn.net/rimg/provider-logos/airlines/v/QH.png?crop=false&width=108&height=92&fallback=default1.png&_v=5c206971a39878302cc80603fe5545d9" alt=""></div>
+            <?php   $flight_id = $value['id']; $ticket = pdo_query("select * from ticket where flight_id = $flight_id and type_ticket_id = $s_seat ");?>
+            <?php foreach ($ticket as $key => $value2): ?>
+            <?php if($value2['status'] == 1): ?>
+                    <div class="sr_bd d-flex align-items-center justify-content-between bg-light mb-3">
+                    <div class="sr_content d-flex align-items-center justify-content-between flex-grow-1">
+                    <div><img class="sr_img" src="img/<?=$value2['company_img']?>" alt=""></div>
                     <div class="flex-grow-1 d-flex flex-column ps-4">
                         <div class="d-flex align-items-center justify-content-between">
-                    <div class="sr_company_name"><span>Hãng: <?= $value['companyName'] ?></span></div>
-                    <div class="">
-                     <span>Loại: <?= $value['ticketType'] ?></span>
-                    </div>
+                    <div class="sr_company_name"><span>Hãng: <?= $value2['company'] ?></span></div>
+                    
                     <div class="sr_time"><span>Thời gian khởi hành: <?= $value['dateTime'] ?></span>
                     </div>
                     
-                    <div class="sr_status"><?= $value['status'] ?></div>
+                    
                     </div>
                     <div class="d-flex align-items-center justify-content-between mt-3">
                     <div class="sr_from"><span>Từ: <?= $value['pointOfDeparture'] ?></span></div>
@@ -76,10 +88,18 @@ if(isset($_POST['check'])){
                     </div>
                 </div>
                 <div class="sr_price ">
-                    <div class="sr_price_main"><span>Giá: <?= $value['price'] ?>$</span></div>
-                    <a class="btn btn-primary" href="">Đặt vé</a>
+                    <div class="sr_price_main"><span>Giá: <?= $value2['price'] ?>$</span></div>
+                    <a class="btn btn-primary" href="index.php?action=booking&id=<?= $value2['id']?>">Đặt vé</a>
                 </div>
             </div>
+            <?php endif ?>
+            <?php if($value2['status'] == 2):?>
+                <div class="sr_bd d-flex align-items-center justify-content-between bg-light mb-3 p-4">
+                Không tìm thấy sản phẩm nào
+            </div>
+            <?php endif ?>
+
+            <?php endforeach ?>
             <?php endforeach ?>
             <?php endif ?>
             <?php if(!$notfound):?>

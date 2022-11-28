@@ -8,13 +8,13 @@
     <title><?= $TITLE_NAME?></title>
     <!--     --===== Boxicons CSS ===== -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/admin.css" />
     <link rel="stylesheet" href="../css/information.css">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container1">
         <nav class="sidebar close">
             <header>
                 <div class="image-text">
@@ -54,16 +54,22 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="index.php?action=ticket">
                                 <i class='bx bxl-go-lang icon'></i>
-                                <span class="text nav-text">Đặt vé</span>
+                                <span class="text nav-text">QL Vé</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="index.php?action=ticket_type">
+                            <i class='bx bxl-go-lang icon'></i>
+                                <span class="text nav-text">QL Loại vé</span>
                             </a>
                         </li>
 
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="index.php?action=flight">
                                 <i class='bx bxs-plane-take-off icon'></i>
-                                <span class="text nav-text">QL vé</span>
+                                <span class="text nav-text">QL Chuyến Bay</span>
                             </a>
                         </li>
 

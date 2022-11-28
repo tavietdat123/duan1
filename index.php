@@ -29,13 +29,21 @@ if (isset($_GET['action'])) {
         case 'forgotPassword';
             $TITLE_NAME = "Quên mật khẩu";
             break;
+        case 'booking';
+            $TITLE_NAME = "Booking";
+            break;
+        case 'pay';
+            $TITLE_NAME = "Pay-Thanh toán";
+            break;
+        case 'pay';
+            $TITLE_NAME = "Lịch Sử Đặt Vé";
+            break;
         default:
             $TITLE_NAME = "Chuyến bay";
             break;
     }
-}else {
+} else {
     $TITLE_NAME = "Chuyến bay";
-
 }
 require_once './DAO/PDO.php';
 session_start();
@@ -55,6 +63,10 @@ if (isset($_GET['action'])) {
 
         case 'register';
             include 'view/account/register.php';
+            break;
+        case 'booking';
+            $PAGE = 'view/booking.php';
+            include 'view/layout.php';
             break;
 
         case 'forgotPassword';
@@ -86,6 +98,14 @@ if (isset($_GET['action'])) {
             $PAGE = 'view/news.php';
             include "view/layout.php";
             break;
+        case 'pay';
+            $PAGE = 'view/pay.php';
+            include "view/layout.php";
+            break;
+        case 'history';
+            $PAGE = 'view/history.php';
+            include "view/layout.php";
+            break;
 
         default:
             $PAGE = "view/body.php";
@@ -96,5 +116,3 @@ if (isset($_GET['action'])) {
     $PAGE = "view/body.php";
     include "view/layout.php";
 }
-
-
