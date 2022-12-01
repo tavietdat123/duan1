@@ -93,6 +93,9 @@ if (isset($_GET['action'])) {
         case  'ticket_type_remove':
             $TITLE_NAME = "Quản lý - Loại vé";
             break;
+        case  'bill':
+            $TITLE_NAME = "Bill - Đã thanh toán";
+            break;
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -523,6 +526,10 @@ if (isset($_GET['action'])) {
             break;
         case 'ticket_type_fix':
             include 'ticket_type/ticket_type_fix.php';
+            break;
+        case 'bill':
+            $rows =  pdo_query("select * from bill where pay = 2");
+            include 'bill/bill.php';
             break;
         default:
             include "body.php";

@@ -29,7 +29,8 @@ $tell = $booking['tell'];
 $fullName = $booking['fullName'];
 $email = $booking['email'];
 $pay = 1;
-pdo_execute("INSERT INTO bill (pointOfDeparture,destination,dateTime,company,company_img,price,type_ticket_id,name,tell,fullName,email,pay,quantity,round_trip,flight_code) VALUES ('$pointOfDeparture','$destination','$dateTime','$company','$company_img','$price','$type_ticket_id','$name','$tell','$fullName','$email','$pay','$quantity','$round_trip','$flight_code')");
+$booking_date = date("Y-m-d h:i:sa");
+pdo_execute("INSERT INTO bill (pointOfDeparture,destination,dateTime,company,company_img,price,type_ticket_id,name,tell,fullName,email,pay,quantity,round_trip,flight_code,booking_date) VALUES ('$pointOfDeparture','$destination','$dateTime','$company','$company_img','$price','$type_ticket_id','$name','$tell','$fullName','$email','$pay','$quantity','$round_trip','$flight_code','$booking_date')");
 $bill = pdo_query("select * from bill");
 $bill_id =  array_pop($bill)['id'];
 echo"<script>
