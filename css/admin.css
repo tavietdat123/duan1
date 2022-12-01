@@ -354,7 +354,9 @@ section.home div.text {
     font-size: 35px;
 }
 
-
+.home{
+    min-height: 100vh;
+}
 /* width */
 
 ::-webkit-scrollbar {
@@ -391,5 +393,9 @@ section.home div.text {
     margin-bottom: 1%;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
+}
+ul{
+    padding: 0;
+    margin: 0;
 }
 /* admin */

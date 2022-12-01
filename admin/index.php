@@ -36,11 +36,11 @@ if (isset($_GET['action'])) {
         case 'updateEndow';
             $TITLE_NAME = "Cập nhật ưu đãi ";
             break;
-            
+
         case 'onpen_endow';
             $TITLE_NAME = "Tạo ưu đãi ";
             break;
-         case 'lock_endow';
+        case 'lock_endow';
             $TITLE_NAME = "Tạo ưu đãi ";
             break;
         case 'review':
@@ -73,7 +73,7 @@ if (isset($_GET['action'])) {
         case 'updateNews':
             $TITLE_NAME = "Danh sách tin tức";
             break;
-<<<<<<< HEAD
+
         case  "flight":
             $TITLE_NAME = "Quản lý - Chuyến Bay";
             break;
@@ -113,9 +113,6 @@ if (isset($_GET['action'])) {
         case  'bill':
             $TITLE_NAME = "Bill - Đã thanh toán";
             break;
-=======
-
->>>>>>> da9d74d92da26c491077d12cdf34111b74d4cacf
         default:
             $TITLE_NAME = "Thống kê";
             break;
@@ -139,6 +136,9 @@ include "../DAO/review_DAO.php";
 include "../DAO/members_DAO.php";
 
 include "../DAO/news_DAO.php";
+include "../DAO/ticket_DAO.php";
+include "../DAO/type_ticket_DAO.php";
+include "../DAO/flight_DAO.php";
 
 include "../DAO/endow_DAO.php";
 
@@ -356,12 +356,12 @@ if (isset($_GET['action'])) {
                 $passWord = $_POST['passWord'];
                 $email = $_POST['email'];
                 $check_role = $_POST['check_role'];
-                if($check_role == 'Admin'){
-                 $role = 0;
-                }else if($check_role == 'Thành viên'){
-                   $role =1;
-                }else{
-                    $role =0;
+                if ($check_role == 'Admin') {
+                    $role = 0;
+                } else if ($check_role == 'Thành viên') {
+                    $role = 1;
+                } else {
+                    $role = 0;
                 }
                 updateMember($id, $fullName, $passWord, $email, $role);
 
@@ -372,12 +372,12 @@ if (isset($_GET['action'])) {
 
             include 'members/listMember.php';
             break;
-            
+
         case 'onpen_user':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
                 $status = 0;
-                updateStatus($id,$status);
+                updateStatus($id, $status);
             }
             $loadAllMembers = loadAllMembers();
             include 'members/listMember.php';
@@ -386,7 +386,7 @@ if (isset($_GET['action'])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
                 $status = 1;
-                updateStatus($id,$status);
+                updateStatus($id, $status);
             }
             $loadAllMembers = loadAllMembers();
             include 'members/listMember.php';
@@ -455,79 +455,79 @@ if (isset($_GET['action'])) {
             include "news/addNews.php";
             break;
 
-            case 'fixNews':
+        case 'fixNews':
 
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 
-                    $loadOneNews = loadOneNews($_GET['id']);
-                    extract($loadOneNews);
+                $loadOneNews = loadOneNews($_GET['id']);
+                extract($loadOneNews);
+            }
+            include 'news/updateNews.php';
+            break;
+
+        case 'updateNews':
+            if (isset($_POST['addNews']) && ($_POST['addNews'])) {
+
+                $id = $_POST['id'];
+                $title = $_POST['title'];
+
+                $image1 = $_FILES['image1']['name'];
+                $image2 = $_FILES['image2']['name'];
+                $image3 = $_FILES['image3']['name'];
+
+                $content1 = $_POST['content1'];
+                $content2 = $_POST['content2'];
+                $content3 = $_POST['content3'];
+
+                $createdAt = date('h:i:sa d/m/Y');
+
+                $target_dir = "../upload/";
+                $target_dir1 = "../upload/";
+                $target_dir2 = "../upload/";
+
+                $image1 = $target_dir . basename($_FILES['image1']['name']);
+                $image2 = $target_dir1 . basename($_FILES['image2']['name']);
+                $image3 = $target_dir2 . basename($_FILES['image3']['name']);
+
+                if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
+                } else {
                 }
-                include 'news/updateNews.php';
-                break;
-
-            case 'updateNews':
-                if (isset($_POST['addNews']) && ($_POST['addNews'])) {
-
-                    $id=$_POST['id'];
-                    $title = $_POST['title'];
-    
-                    $image1 = $_FILES['image1']['name'];
-                    $image2 = $_FILES['image2']['name'];
-                    $image3 = $_FILES['image3']['name'];
-    
-                    $content1 = $_POST['content1'];
-                    $content2 = $_POST['content2'];
-                    $content3 = $_POST['content3'];
-    
-                    $createdAt = date('h:i:sa d/m/Y');
-    
-                    $target_dir = "../upload/";
-                    $target_dir1 = "../upload/";
-                    $target_dir2 = "../upload/";
-    
-                    $image1 = $target_dir . basename($_FILES['image1']['name']);
-                    $image2 = $target_dir1 . basename($_FILES['image2']['name']);
-                    $image3 = $target_dir2 . basename($_FILES['image3']['name']);
-    
-                    if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
-                    } else {
-                    }
-                    if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
-                    } else {
-                    }
-                    if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
-                    } else {
-                    }
-    
-                    updateNews($id,$title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
-    
-                    $thongbao = "Thêm thông tin thành công";
+                if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
+                } else {
+                }
+                if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
+                } else {
                 }
 
-                $loadAllNews = loadAllNews();
-                include 'news/listNews.php';
-                break;
-            case 'list_endow':
-                $loadAllEndow = loadAllEndow();
-                    include 'endow/list_endow.php';
-                    break;
-            case 'taoEndow':
-                include "endow/tao_endow.php";
-                break;
-            case 'addEndow':
+                updateNews($id, $title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
+
+                $thongbao = "Thêm thông tin thành công";
+            }
+
+            $loadAllNews = loadAllNews();
+            include 'news/listNews.php';
+            break;
+        case 'list_endow':
+            $loadAllEndow = loadAllEndow();
+            include 'endow/list_endow.php';
+            break;
+        case 'taoEndow':
+            include "endow/tao_endow.php";
+            break;
+        case 'addEndow':
             if (isset($_POST['addEndow']) && ($_POST['addEndow'])) {
                 $NameCode = $_POST['NameCode'];
                 $CodeEndow = $_POST['CodeEndow'];
                 $AmountEndow = $_POST['AmountEndow'];
                 $MoneyEndow = $_POST['MoneyEndow'];
                 $PercentEndow = $_POST['PercentEndow'];
-                addEndow($NameCode,$CodeEndow,$AmountEndow,$MoneyEndow,$PercentEndow);
+                addEndow($NameCode, $CodeEndow, $AmountEndow, $MoneyEndow, $PercentEndow);
             }
             $loadAllEndow = loadAllEndow();
             include "endow/list_endow.php";
             break;
-            
-            case "suaEndow":
+
+        case "suaEndow":
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 
                 $loadOneEndow = loadOneEndow($_GET['id']);
@@ -535,7 +535,7 @@ if (isset($_GET['action'])) {
             }
             include 'endow/update_endow.php';
             break;
-            case 'updateEndow':
+        case 'updateEndow':
             if (isset($_POST['updateEndow']) && ($_POST['updateEndow'])) {
                 $id = $_POST['id'];
                 $NameCode = $_POST['NameCode'];
@@ -543,12 +543,12 @@ if (isset($_GET['action'])) {
                 $AmountEndow = $_POST['AmountEndow'];
                 $MoneyEndow = $_POST['MoneyEndow'];
                 $PercentEndow = $_POST['PercentEndow'];
-                updateEndow($id, $NameCode,$CodeEndow,$AmountEndow,$MoneyEndow,$PercentEndow);
+                updateEndow($id, $NameCode, $CodeEndow, $AmountEndow, $MoneyEndow, $PercentEndow);
             }
             $loadAllEndow = loadAllEndow();
             include 'endow/list_endow.php';
             break;
-<<<<<<< HEAD
+
         case 'flight':
             $rows = flight_select_all();
             include 'flight/flight.php';
@@ -592,36 +592,33 @@ if (isset($_GET['action'])) {
             $rows =  pdo_query("select * from bill where pay = 2");
             include 'bill/bill.php';
             break;
-=======
-            case 'xoaEndow':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+        case 'xoaEndow':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 
-                    deleteEndow($_GET['id']);
-                }
-    
-                $loadAllEndow = loadAllEndow();
-                include 'endow/list_endow.php';
-                break;
-            case 'onpen_endow':
-                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                        $id = $_GET['id'];
-                        $status = 0;
-                        updateStatusEndow($id,$status);
-                    }
-                    $loadAllEndow = loadAllEndow();
-                    include 'endow/list_endow.php';
-                    break;
-            case 'lock_endow':
-                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                        $id = $_GET['id'];
-                        $status = 1;
-                        updateStatusEndow($id,$status);
-                    }
-                    $loadAllEndow = loadAllEndow();
-                    include 'endow/list_endow.php';
-                    break;
+                deleteEndow($_GET['id']);
+            }
 
->>>>>>> da9d74d92da26c491077d12cdf34111b74d4cacf
+            $loadAllEndow = loadAllEndow();
+            include 'endow/list_endow.php';
+            break;
+        case 'onpen_endow':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $status = 0;
+                updateStatusEndow($id, $status);
+            }
+            $loadAllEndow = loadAllEndow();
+            include 'endow/list_endow.php';
+            break;
+        case 'lock_endow':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $status = 1;
+                updateStatusEndow($id, $status);
+            }
+            $loadAllEndow = loadAllEndow();
+            include 'endow/list_endow.php';
+            break;
         default:
             include "body.php";
             break;
