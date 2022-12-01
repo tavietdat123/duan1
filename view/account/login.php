@@ -7,7 +7,7 @@ $rows = pdo_query("select * from account");
  foreach ($rows as $key => $value) {
    if(isset($username_dn) && isset($password_dn)){
     $check_pass=password_verify($password_dn,$value['passWord']);
-    if($value['email'] == $username_dn && $check_pass && $value['status'] ==0 ){
+    if($value['email'] == $username_dn && $check_pass && $value['status'] == 0 ){
            if($value['role']== 1){
               $_SESSION['client']= $value['email'];
              header("location: index.php");

@@ -75,6 +75,7 @@
                         </li>
 
                         <li class="nav-link">
+<<<<<<< HEAD
                             <a href="index.php?action=bill">
                             <i class="icon fa-solid fa-money-bill"></i>
                                 <span class="text nav-text">Bill đã thanh toán</span>
@@ -84,6 +85,9 @@
 
                         <li class="nav-link">
                             <a href="index.php?action=endow">
+=======
+                            <a href="index.php?action=list_endow">
+>>>>>>> da9d74d92da26c491077d12cdf34111b74d4cacf
                                 <i class="bx bxs-party icon"></i>
                                 <span class="text nav-text">Ưu đãi</span>
                             </a>

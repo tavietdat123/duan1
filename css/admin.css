@@ -27,12 +27,8 @@ a {
     --tran-05: all 0.3s ease;
     --orange: #ff6900;
 }
-ul{
-    padding: 0;
-    margin: 0;
-}
 
-div.container1 {
+div.container {
     min-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
@@ -396,6 +392,4 @@ section.home div.text {
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
 }
-.input_d{
-    height: 50px;
-}
+/* admin */

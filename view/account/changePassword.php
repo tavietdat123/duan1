@@ -5,13 +5,13 @@ $email =  $_SESSION['client'];
 $row = pdo_query_one("select * from account where email = '$email'");
  if(isset($_POST['check'])){
 
-  $password_new = $_POST['password_new'];
+  $password = $_POST['password'];
   $password_dk = $_POST['password_dk'];
   $re_password_dk = $_POST['re_password_dk'];
-  $check_pass = password_verify($password_dk,$row['passWord']);
+  $check_pass = password_verify($password,$row['passWord']);
 
-            if($password_new == "") {
-                $errorem = "Bạn chưa nhập Mật khẩu";
+            if($password == "") {
+                $errorem = "Bạn chưa nhập password hiện tại";
             }elseif(!($check_pass)){
                 $errorem="Mật khẩu không trùng khớp";
                      } 
@@ -19,7 +19,7 @@ $row = pdo_query_one("select * from account where email = '$email'");
                 $errormk = "Bạn chưa nhập Mật khẩu mới";
             }elseif($password_dk < 6){
                 $errormk ="Mật khẩu ít nhất 6 kí tự";
-            }elseif($password_new == $password_dk){
+            }elseif($password == $row['passWord']){
                 $errormk ="Mật khẩu không được trùng với mật khẩu hiện tại";
             }
             if($re_password_dk == "") {
@@ -27,8 +27,13 @@ $row = pdo_query_one("select * from account where email = '$email'");
             }elseif(!($re_password_dk == $password_dk)){
                     $errorremk =  "Nhập lại mật khẩu mới không trùng khớp";
             }
+
 if( !isset($errorem) && !isset($errormk)&& !isset($errorremk)){
-    $create_user ="update account set passWord = '$password_dk' where email = '$email'";
+    $password_hash = password_hash(
+        $password_dk,
+        PASSWORD_BCRYPT,
+    );
+    $create_user ="update account set passWord = '$password_hash' where email = '$email'";
     pdo_execute($create_user);
     echo"<script>alert(Đổi mật khẩu thành công);</script>";
     header("location: /index.php");
@@ -86,7 +91,7 @@ if( !isset($errorem) && !isset($errormk)&& !isset($errorremk)){
                 </svg>
                 <h4>Đổi Mật Khẩu</h4>
             </div>
-            <a class="login_header_link" href="/flight.html">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
+            <a class="login_header_link" href="index.php">Quay lại trang chủ <i class="fa-solid fa-right"></i></a>
         </div>
 
     </div>
@@ -125,7 +130,7 @@ if( !isset($errorem) && !isset($errormk)&& !isset($errorremk)){
                 <h4>Đổi Mật Khẩu</h4>
             </div>
             <form action="./changePassword.php" method="post" class=" d-flex flex-column">
-                <input type="text" placeholder="Nhập Email..." name="password_new"
+                <input type="text" placeholder="Nhập Password hiện tại..." name="password"
                     value="<?php if(isset($password_new)){echo$password_new;}?>">
                 <p style="color: red;margin-left:2px;margin-top:2px ; font-size: 12px; font-weight: 300">
                     <?php if(isset($errorem)){echo$errorem;} ?></p>
