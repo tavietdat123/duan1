@@ -7,7 +7,6 @@ if (isset($_SESSION['client'])) {
         $boolean = true;
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +126,7 @@ if (isset($_SESSION['client'])) {
                 const test11 = document.querySelector('.test1')
             test11.onclick = ()=>{
                 setTimeout(()=>{
-                            let store = localStorage.getItem(history) ?? [] 
+                            let store = localStorage.getItem(history) ?? []
                             location.href = `index.php?action=history&$store=${store}`},500)
             }
             

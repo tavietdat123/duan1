@@ -6,6 +6,9 @@ if (isset($_POST['check'])) {
     $flight = $_POST['flight'];
     $type_ticket_id = $_POST['type_ticket_id'];
     $status = $_POST['status'];
+    $flight_code = $_POST['flight_code'];
+    $round_trip = $_POST['round_trip'];
+    
     $company_img = $_FILES['company_img'];
     var_dump($company_img);
     if ($company == '') {
@@ -27,6 +30,9 @@ if (isset($_POST['check'])) {
     if ($flight == '') {
         $flight_er = "Bạn cần phải nhập trường này! ";
     }
+    if ($flight_code == '') {
+        $flight_code_er = "Bạn cần phải nhập trường này! ";
+    }
     if ($company_img['size'] > 0) {
         $ext = pathinfo($company_img['name'], PATHINFO_EXTENSION);
         if ($ext != "png" && $ext != "jpg" && $ext != "jpeg" && $ext != "gif") {
@@ -35,10 +41,9 @@ if (isset($_POST['check'])) {
     } else {
         $company_img_er = "Bạn chưa nhập ảnh";
     }
-    if(!isset($company_er) && !isset($price_er) && !isset($quantity_er) && !isset($type_ticket_id_er) && !isset($flight_er) && !isset($company_img_er) ){
+    if(!isset($company_er) && !isset($price_er) && !isset($quantity_er) && !isset($flight_code_er) && !isset($type_ticket_id_er) && !isset($flight_er) && !isset($company_img_er) ){
         $img_logo = $company_img['name'];
-        ticket_insert($price,$company,$img_logo,$status,$type_ticket_id,$quantity,$flight);
-        echo$company_img['tmp_name'];
+        ticket_insert($price,$company,$img_logo,$status,$type_ticket_id,$quantity,$flight,$round_trip,$flight_code);
         move_uploaded_file($company_img['tmp_name'] , '../img/'.$img_logo);
         echo "<script>
         location.href = '/admin/index.php?action=ticket'
@@ -55,7 +60,7 @@ $flight_all = flight_select_all();
             <!-- Start Input Name -->
             <div class="form-group">
                 <label for="inputName1">Tên hãng</label>
-                <input type="text" class="form-control input_d" id="inputName1" name="company" value="<?= isset($company) ? $company : '' ?>" placeholder="From ..."  />
+                <input type="text" class="form-control input_d" id="inputName1" name="company" value="<?= isset($company) ? $company : '' ?>"   />
                 <small class="form-text text-danger"><?= isset($company_er) ? $company_er : '' ?></p></small>
             </div>
 
@@ -69,7 +74,7 @@ $flight_all = flight_select_all();
 
             <div class="form-group mt-2">
                 <label for="inputEmail3">Giá</label>
-                <input type="number" class="form-control input_d" id="inputEmail3" name="price" value="<?= isset($price) ? $price : '' ?>" placeholder="To ..." />
+                <input type="number" class="form-control input_d" id="inputEmail3" name="price" value="<?= isset($price) ? $price : '' ?>" />
                 <small class="form-text text-danger"><?= isset($price_er) ? $price_er : '' ?></p></small>
             </div>
 
@@ -103,12 +108,24 @@ $flight_all = flight_select_all();
                 </select>
                 <small class="form-text text-danger"><?= isset($flight_er) ? $flight_er : '' ?></p></small>
             </div>
-
+            <div class="form-group mt-4">
+                <label for="">Tuyến đi</label>
+                <select class="form-control input_d" name="round_trip">
+                    <option value="1" >Một chiều</option>
+                    <option value="2" >Khứ hồi</option>
+                </select>
+            </div>
+            <div class="form-group mt-4">
+                <label for="inputEmail5">Mã chuyến bay</label>
+                <input type="text" class="form-control input_d" id="inputEmail5" name="flight_code" value="<?= isset($flight_code) ? $flight_code : '' ?>" />
+                <small class="form-text text-danger"><?= isset($flight_code_er) ? $flight_code_er : '' ?></p></small>
+            </div>
             <div class="form-group mt-4">
                 <label for="inputEmail5">Số Lượng</label>
-                <input type="number" class="form-control input_d" id="inputEmail5" name="quantity" value="<?= isset($quantity) ? $quantity : '' ?>" placeholder="To ..." />
+                <input type="number" class="form-control input_d" id="inputEmail5" name="quantity" value="<?= isset($quantity) ? $quantity : '' ?>" />
                 <small class="form-text text-danger"><?= isset($quantity_er) ? $quantity_er : '' ?></p></small>
             </div>
+            
 
             <div><button class="btn btn-success pe-5 ps-5 mt-4" name="check">Tạo Mới</button> 
             <a href="/admin/index.php?action=ticket" class="btn btn-primary pe-5 ps-5 mt-4 ms-3" >Quay Lại</a></div>

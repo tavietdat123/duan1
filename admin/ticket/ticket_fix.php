@@ -9,6 +9,8 @@ if (isset($_POST['check'])) {
     $company_img = $_FILES['company_img'];
     $company_img_ex = $_POST['company_img_ex'];
     $ticket_id = $_POST['ticket_id'];
+    $flight_code = $_POST['flight_code'];
+    $round_trip = $_POST['round_trip'];
     if ($company == '') {
         $company_er = "Bạn cần phải nhập trường này! ";
     }
@@ -28,6 +30,9 @@ if (isset($_POST['check'])) {
     if ($flight == '') {
         $flight_er = "Bạn cần phải nhập trường này! ";
     }
+    if ($flight_code == '') {
+        $flight_code_er = "Bạn cần phải nhập trường này! ";
+    }
     if ($company_img['size'] > 0) {
         $ext = pathinfo($company_img['name'], PATHINFO_EXTENSION);
         if ($ext != "png" && $ext != "jpg" && $ext != "jpeg" && $ext != "gif") {
@@ -37,7 +42,7 @@ if (isset($_POST['check'])) {
         }
     }
     if(!isset($company_er) && !isset($price_er) && !isset($quantity_er) && !isset($type_ticket_id_er) && !isset($flight_er) && !isset($company_img_er) ){
-        ticket_update($price,$company,$company_img_ex,$status,$type_ticket_id,$quantity,$flight,$ticket_id);
+        ticket_update($price,$company,$company_img_ex,$status,$type_ticket_id,$quantity,$flight,$round_trip,$flight_code,$ticket_id);
         move_uploaded_file($company_img['tmp_name'] , 'ticket/img/'.$company_img_ex);
         echo "<script>
         location.href = '/admin/index.php?action=ticket'
@@ -106,6 +111,18 @@ $row =  selectOneTicket($id);
                     <?php endforeach?>
                 </select>
                 <small class="form-text text-danger"><?= isset($flight_er) ? $flight_er : '' ?></p></small>
+            </div>
+            <div class="form-group mt-4">
+                <label for="">Tuyến đi</label>
+                <select class="form-control input_d" name="round_trip">
+                    <option value="1" <?= $row['round_trip'] ==1 ? "selected" : ""?> >Một chiều</option>
+                    <option value="2" <?= $row['round_trip'] ==2 ? "selected" : ""?>>Khứ hồi</option>
+                </select>
+            </div>
+            <div class="form-group mt-4">
+                <label for="inputEmail5">Mã chuyến bay</label>
+                <input type="text" class="form-control input_d" id="inputEmail5" name="flight_code" value="<?= $row['flight_code']?>" />
+                <small class="form-text text-danger"><?= isset($flight_code_er) ? $flight_code_er : '' ?></p></small>
             </div>
 
             <div class="form-group mt-4">

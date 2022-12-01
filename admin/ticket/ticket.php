@@ -10,6 +10,8 @@
                 <th>Trạng Thái</th>
                 <th>Loại vé</th>
                 <th>Số Lượng</th>
+                <th>Chuyến</th>
+                <th>Mã CB</th>
                 <th>Chuyến bay</th>
                 <th><a class="btn btn-success" href="index.php?action=ticket_add">Tạo Mới</a></th>
             </tr>
@@ -24,6 +26,8 @@
                     <td><?= $value['status'] == 1 ? "Còn" : "Hết" ?></td>
                     <td> <?= selectOneTicket_type($value['type_ticket_id'])['name'] ?></td>
                     <td><?= $value['quantity'] ?></td>
+                    <td><?= $value['round_trip']==2 ? "Khứ hồi" : "Một chiều" ?></td>
+                    <td><?= $value['flight_code'] ?></td>
                     <td style="font-size: 14px;">Từ: <?php $row = flight_select_one($value['flight_id']); echo$row['pointOfDeparture']; ?><br /> Đến: <?=$row['destination'] ?> <br/> <?=$row['dateTime'] ?> </td>
                     <td>
                         <a class="btn btn-primary" href="index.php?action=ticket_fix&id=<?= $value['id'] ?>">Sửa</a>

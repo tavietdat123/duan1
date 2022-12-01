@@ -33,7 +33,7 @@ if (!isset($clent_email_er) && !isset($clent_phone_er) && !isset($clent_name_er)
         $id_booking =  array_pop($booking)['id'];
         // echo$id_booking;
         echo"<script>
-        location.href = '/index.php?action=pay&id=$id_booking'
+        location.href = '/index.php?action=pay&id=$id_booking&qt=".$_GET['$qt']."'
     </script>";
 }
 }
@@ -152,18 +152,21 @@ if (!isset($clent_email_er) && !isset($clent_phone_er) && !isset($clent_name_er)
                             <div class="d-flex flex-column">
                                 <p style="font-weight: 600;"><?= $ticket['company'] ?></p>
                                 <p style="font-size: 12px;" class="text-muted">Loại vé: <span style="font-weight: 600;"><?= $ticket_type['name'] ?></span></p>
+                                <p style="font-size: 12px;" class="text-muted">Chuyến đi: <span style="font-weight: 600;"><?= $ticket['round_trip']==2 ? "Khứ hồi" :"Một Chiều" ?></span></p>
+                                <p style="font-size: 12px;" class="text-muted">Mã Chuyến bay: <span style="font-weight: 600;"><?=$ticket['flight_code']?></span></p>
+
                             </div>
                         </div>
                     </div>
                     <hr class="mt-0 line">
                     <div class="p-3 d-flex justify-content-between">
                         <div class="d-flex flex-column">
-                            Giá:
+                            <?=$_GET['$qt']?> Vé Tổng giá:
                         </div>
                         <span style="font-weight: 600;"> <?php if(isset($_SESSION['client'])){
-                            $price = $ticket['price']/100 *96;
+                            $price = ($_GET['$qt']*$ticket['price'])/100 *96;
                             echo$price."$ giảm 4% TV";
-                         }else{echo$ticket['price']."$";}  ?></span>
+                         }else{echo $_GET['$qt']*$ticket['price']."$";}  ?></span>
                     </div>
                     <div class="p-3">
                         <div class="text-center">

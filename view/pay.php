@@ -15,15 +15,21 @@ $company = $ticket['company'];
 $company_img = $ticket['company_img'];
 $price = $ticket['price'];
 if(isset($_SESSION['client'])){
-    $price = $price/100 *96;
+    $price = $_GET['qt']*$price/100 *96;
+}else{
+    $price = $_GET['qt']*$price;
 }
+$quantity = $_GET['qt'];
+$round_trip = $ticket['round_trip'];
+$flight_code =$ticket['flight_code'];
+
 $type_ticket_id = $ticket['type_ticket_id'];
 $name = $booking['name'];
 $tell = $booking['tell'];
 $fullName = $booking['fullName'];
 $email = $booking['email'];
 $pay = 1;
-pdo_execute("INSERT INTO bill (pointOfDeparture,destination,dateTime,company,company_img,price,type_ticket_id,name,tell,fullName,email,pay) VALUES ('$pointOfDeparture','$destination','$dateTime','$company','$company_img','$price','$type_ticket_id','$name','$tell','$fullName','$email','$pay')");
+pdo_execute("INSERT INTO bill (pointOfDeparture,destination,dateTime,company,company_img,price,type_ticket_id,name,tell,fullName,email,pay,quantity,round_trip,flight_code) VALUES ('$pointOfDeparture','$destination','$dateTime','$company','$company_img','$price','$type_ticket_id','$name','$tell','$fullName','$email','$pay','$quantity','$round_trip','$flight_code')");
 $bill = pdo_query("select * from bill");
 $bill_id =  array_pop($bill)['id'];
 echo"<script>
@@ -158,6 +164,8 @@ localStorage.setItem(history, JSON.stringify(bill))},1000)
                             <div class="d-flex flex-column">
                                 <p style="font-weight: 600;"><?= $ticket['company'] ?></p>
                                 <p style="font-size: 12px;" class="text-muted">Loại vé: <span style="font-weight: 600;"><?= $ticket_type['name'] ?></span></p>
+                                <p style="font-size: 12px;" class="text-muted">Chuyến đi: <span style="font-weight: 600;"><?= $ticket['round_trip']==2 ? "Khứ hồi" :"Một Chiều" ?></span></p>
+                                <p style="font-size: 12px;" class="text-muted">Mã Chuyến bay: <span style="font-weight: 600;"><?=$ticket['flight_code']?></span></p>
                             </div>
                         </div>
                         <div class="d-flex mt-4 ">
@@ -173,12 +181,12 @@ localStorage.setItem(history, JSON.stringify(bill))},1000)
                     <hr class="mt-0 line">
                     <div class="p-3 d-flex justify-content-between">
                         <div class="d-flex flex-column">
-                            Giá:
+                        <?=$_GET['qt']?> Vé Tổng giá:
                         </div>
                         <span style="font-weight: 600;"> <?php if(isset($_SESSION['client'])){
-                            $price = $ticket['price']/100 *96;
+                            $price = ($_GET['qt']*$ticket['price'])/100 *96;
                             echo$price."$ giảm 4% TV";
-                         }else{echo$ticket['price']."$";}  ?></span>
+                         }else{echo $_GET['qt']*$ticket['price']."$";}  ?></span>
                     </div>
                     <div class="p-3">
                         <div class="text-center">

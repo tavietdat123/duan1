@@ -15,13 +15,15 @@
                 </div>
             </div>
             <hr class="mt-0 line">
-            <?php if($arr == []):?>
+            <?php if($arr == [] ):?>
                 <div class="cart_no_product justify-content-center align-items-center d-flex flex-column">
 <img width="120"  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/cart/9bdd8040b334d31946f49e36beaf32db.png" alt="">
 <span class="mt-3">Bạn chưa đặt chuyến bay nào</span>
 
 </div>
             <?php endif ?>
+            <?php if(! $arr==[] ):?>
+
             <?php foreach ($arr as $key => $value) : ?>
                 <?php $row = pdo_query_one("select * from bill where id = $value") ?>
                 <?php
@@ -40,6 +42,8 @@
                             <div class="d-flex flex-column">
                                 <p style="font-weight: 600;"><?= $row['company'] ?></p>
                                 <p style="font-size: 12px;" class="text-muted">Loại vé: <span style="font-weight: 600;"><?= $ticket_type ?></span></p>
+                                <p style="font-size: 12px;" class="text-muted">Chuyến đi: <span style="font-weight: 600;"><?= $row['round_trip']==2 ? "Khứ hồi" :"Một Chiều" ?></span></p>
+                                <p style="font-size: 12px;" class="text-muted">Mã Chuyến bay: <span style="font-weight: 600;"><?=$row['flight_code']?></span></p>
                             </div>
                         </div>
                         <div class="d-flex mt-4 ">
@@ -53,7 +57,7 @@
 
                     </div>
                     <div class="d-flex justify-content-center align-items-end flex-column flex-end justify-content-end">
-                        <p>Tổng giá : <span style="font-weight: 600;"><?= $row['price'] ?></span>$</p>
+                        <p><?=$row['quantity']?> Vé Tổng giá: <span style="font-weight: 600;"><?= $row['price'] ?></span>$</p>
                         <?php if ($row['pay'] == 1) : ?>
                             <p>Trạng thái : <span>Chưa thanh toán</span></p>
                             <a href="#" class="btn btn-primary mt-2">Thanh Toán ngay</a>
@@ -75,6 +79,8 @@
                 </div>
                 <hr class="mt-0 line">
             <?php endforeach ?>
+            <?php endif ?>
+
             <div class="p-3">
                 <div class="text-center">
                     <a href="/index.php" style="font-size: 12px;">Xem thêm các chuyến bay khác</a>

@@ -46,7 +46,7 @@ p {
 .search_from,
 .search_to,
 .search_timer,
-.search_seat {
+.search_seat{
   background-color: #fff;
   margin: 4px;
   border-radius: 6px;
@@ -54,6 +54,22 @@ p {
   align-items: center;
   overflow: hidden;
   flex: 1;
+}
+.search_kh{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 6px;
+  margin: 4px;
+
+}
+.search_kh label{
+  margin: 0 20px;
+}
+.search_kh input{
+  margin: 0 20px;
+  padding: 7px;
 }
 .search_seat {
   flex: 0.6;
