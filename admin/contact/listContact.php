@@ -4,7 +4,7 @@
         <table border=1>
             <tr>
                 <th>Tên khách hàng</th>
-                <th>Email khách hàng</th>
+                <th>SĐT</th>
                 <th>Nội dung</th>
                 <th>Thao tác</th>
             </tr>
