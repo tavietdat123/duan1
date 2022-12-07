@@ -141,6 +141,7 @@ include "../DAO/type_ticket_DAO.php";
 include "../DAO/flight_DAO.php";
 
 include "../DAO/endow_DAO.php";
+include "../DAO/contact_DAO.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -391,7 +392,25 @@ if (isset($_GET['action'])) {
             $loadAllMembers = loadAllMembers();
             include 'members/listMember.php';
             break;
-        case 'news';
+
+        case 'listContact';
+        $loadAllContact = loadAllContact();
+
+        include 'contact/listContact.php';
+        break;
+        case 'deleteContact':
+
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                deleteContact($_GET['id']);
+            }
+
+            $loadAllContact = loadAllContact();
+
+            include 'contact/listContact.php';
+
+            break;
+        case 'listNews';
 
             $loadAllNews = loadAllNews();
 
@@ -417,36 +436,17 @@ if (isset($_GET['action'])) {
             if (isset($_POST['addNews']) && ($_POST['addNews'])) {
 
                 $title = $_POST['title'];
-
-                $image1 = $_FILES['image1']['name'];
-                $image2 = $_FILES['image2']['name'];
-                $image3 = $_FILES['image3']['name'];
-
-                $content1 = $_POST['content1'];
-                $content2 = $_POST['content2'];
-                $content3 = $_POST['content3'];
-
+                $image = $_FILES['image']['name'];
+                $content = $_POST['content'];
                 $createdAt = date('h:i:sa d/m/Y');
 
-                $target_dir = "../upload/";
-                $target_dir1 = "../upload/";
-                $target_dir2 = "../upload/";
-
-                $image1 = $target_dir . basename($_FILES['image1']['name']);
-                $image2 = $target_dir1 . basename($_FILES['image2']['name']);
-                $image3 = $target_dir2 . basename($_FILES['image3']['name']);
-
-                if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
-                } else {
-                }
-                if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
-                } else {
-                }
-                if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
+                $target_dir = "../img/";
+                $image = $target_dir . basename($_FILES['image']['name']);
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
                 } else {
                 }
 
-                addNews($title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
+                addNews($title, $image,$content, $createdAt);
 
                 $thongbao = "Thêm thông tin thành công";
             }
@@ -471,35 +471,20 @@ if (isset($_GET['action'])) {
                 $id = $_POST['id'];
                 $title = $_POST['title'];
 
-                $image1 = $_FILES['image1']['name'];
-                $image2 = $_FILES['image2']['name'];
-                $image3 = $_FILES['image3']['name'];
+                $image = $_FILES['image']['name'];
 
-                $content1 = $_POST['content1'];
-                $content2 = $_POST['content2'];
-                $content3 = $_POST['content3'];
+                $content = $_POST['content'];
+
 
                 $createdAt = date('h:i:sa d/m/Y');
 
-                $target_dir = "../upload/";
-                $target_dir1 = "../upload/";
-                $target_dir2 = "../upload/";
-
-                $image1 = $target_dir . basename($_FILES['image1']['name']);
-                $image2 = $target_dir1 . basename($_FILES['image2']['name']);
-                $image3 = $target_dir2 . basename($_FILES['image3']['name']);
-
-                if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1)) {
-                } else {
-                }
-                if (move_uploaded_file($_FILES['image2']['tmp_name'], $image2)) {
-                } else {
-                }
-                if (move_uploaded_file($_FILES['image3']['tmp_name'], $image3)) {
+                $target_dir = "../img/";
+                $image = $target_dir . basename($_FILES['image']['name']);
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
                 } else {
                 }
 
-                updateNews($id, $title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt);
+                updateNews($id, $title, $image, $content, $createdAt);
 
                 $thongbao = "Thêm thông tin thành công";
             }

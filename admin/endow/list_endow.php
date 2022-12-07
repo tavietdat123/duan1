@@ -6,7 +6,6 @@
     <main class="sms">
         <table border=1>
             <tr>
-                <th>ID ưu đãi</th>
                 <th>Tên ưu đãi</th>
                 <th>Mã ưu đãi</th>
                 <th>Số lượng mã ưu đãi</th>
@@ -34,7 +33,6 @@
             }
                 echo '
                 <tr>
-                    <td>'.$id.'</td>
                     <td>'.$NameCode.'</td>
                     <td>'.$CodeEndow.'</td>
                     <td>'.$AmountEndow.'</td>

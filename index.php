@@ -20,6 +20,9 @@ if (isset($_GET['action'])) {
         case 'news';
             $TITLE_NAME = "Tin Tức";
             break;
+        case 'contact';
+            $TITLE_NAME = "Liên hệ";
+            break;
         case 'login';
             $TITLE_NAME = "Đăng nhập";
             break;
@@ -64,6 +67,10 @@ if (isset($_GET['action'])) {
         case 'register';
             include 'view/account/register.php';
             break;
+        case 'contact';
+            $PAGE = 'view/contact.php';
+            include 'view/layout.php';
+            break;
         case 'booking';
             $PAGE = 'view/booking.php';
             include 'view/layout.php';
@@ -88,7 +95,17 @@ if (isset($_GET['action'])) {
             $PAGE = 'view/review.php';
             include "view/layout.php";
             break;
-
+        case 'thanhtoanvpay';
+            include "view/thanhtoanvpay.php";
+            break;
+            
+        case 'thanhtoanmomo';
+        include "view/thanhtoanmomo.php";
+        break;
+                    
+        case 'thanhtoanmomoatm';
+        include "view/thanhtoanmomoatm.php";
+        break;
         case 'endow';
             $PAGE = 'view/endow.php';
             include "view/layout.php";

@@ -12,7 +12,6 @@
             <br>
             <input type="text" name="CodeEndow" class="input-text" required>
             <br><br>
-
             <label for="">Số lượng mã</label>
             <br>
             <input type="number" name="AmountEndow" class="input-text" min="0" required>
@@ -25,7 +24,7 @@
             <br>
             <input type="number" name="PercentEndow" class="input-text" min="0" max="100" required>
             <br><br><br>
-            <input name="addEndow" style="margin-left: 38%;" type="submit" class="btn-add" value="Tạo mã ưu đãi">
+            <input name="addEndow" style="margin-left: 38%;" type="submit" class="btn-add" value="Tạo mã">
         </form>
     </main>
 </section>
