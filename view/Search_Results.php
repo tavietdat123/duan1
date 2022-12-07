@@ -136,10 +136,6 @@ if (isset($_POST['check'])) {
                     Không tìm thấy sản phẩm nào
                 </div>
             <?php endif ?>
-
-
-
-
         </div>
     </div>
 </div>
