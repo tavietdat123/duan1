@@ -29,8 +29,8 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua ATM";
 $amount = "10000";
 $orderId = time() ."";
-$redirectUrl = "http://localhost:3000/index.php?action=contact";
-$ipnUrl = "http://localhost:3000/index.php?action=contact";
+$redirectUrl = "http://localhost:3000/index.php";
+$ipnUrl = "http://localhost:3000/index.php";
 $extraData = "";
 
 

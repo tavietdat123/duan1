@@ -1,5 +1,4 @@
 <?php
-include "pay.php";
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         /*
         * To change this license header, choose License Headers in Project Properties.
@@ -10,7 +9,7 @@ include "pay.php";
         $vnp_TmnCode = "7FM39UX7"; //Website ID in VNPAY System
         $vnp_HashSecret = "DHEDSWTJKZEKJERNVAYXVGEBXHWQYVQB"; //Secret key
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost:3000/index.php?action=contact";
+        $vnp_Returnurl = "http://localhost:3000/index.php";
         $vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
         //Config input format
         //Expire
@@ -20,7 +19,7 @@ include "pay.php";
         $vnp_TxnRef = time(); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Thanh toán đơn hàng';
         $vnp_OrderType = 'Thanh toán hóa đơn';
-        $vnp_Amount = $ticket['price'];
+        $vnp_Amount = 100 * 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
