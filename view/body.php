@@ -1,5 +1,6 @@
 <?php
 $ticket_type = pdo_query("select * from ticket_type ");
+$slide = pdo_query("select * from  slideshow");
 ?>
 <div class="container_content">
     <div class="content">
@@ -11,17 +12,23 @@ $ticket_type = pdo_query("select * from ticket_type ");
                 <div class="container_search_form  p-2">
                     <div class="container_search_form_s">
                         <div class="search_from ">
-                            <label for="" class="d-flex align-items-center "><i class="fa-solid fa-plane me-2"></i> Từ:</label>
+                            <label for="" class="d-flex align-items-center "><i class="fa-solid fa-plane me-2"></i>
+                                Từ:</label>
                             <input type="text" name="s_from" placeholder="from..." required>
                         </div>
 
                         <div class="search_to ">
-                            <label for="" class="d-flex align-items-center "><i class="fa-solid fa-plane me-2"></i> Đến:</label>
+                            <label for="" class="d-flex align-items-center "><i class="fa-solid fa-plane me-2"></i>
+                                Đến:</label>
                             <input type="text" name="s_to" placeholder="To..." required>
                         </div>
                         <div class="search_from ">
-                            <label for="" class="d-flex align-items-center"><i class="fa-solid fa-arrow-down-9-1 me-2"></i><span class="d-flex align-items-center "><span class="me-1">Số</span> <span>Vé:</span></span>   </label>
-                            <input type="number" name="s_quantity" value="1" min="1" placeholder="Số Lượng Vé ..." required>
+                            <label for="" class="d-flex align-items-center"><i
+                                    class="fa-solid fa-arrow-down-9-1 me-2"></i><span
+                                    class="d-flex align-items-center "><span class="me-1">Số</span>
+                                    <span>Vé:</span></span> </label>
+                            <input type="number" name="s_quantity" value="1" min="1" placeholder="Số Lượng Vé ..."
+                                required>
                         </div>
 
                     </div>
@@ -35,16 +42,18 @@ $ticket_type = pdo_query("select * from ticket_type ");
                             </div>
                         </div>
                         <div class="search_seat ">
-                            <label for="" class="d-flex align-items-center"><i class="fa-solid fa-ticket"></i><span>Ghế:</span></label>
+                            <label for="" class="d-flex align-items-center"><i
+                                    class="fa-solid fa-ticket"></i><span>Ghế:</span></label>
                             <select id="inputState" class="form-control" name="s_seat" required>
                                 <?php foreach ($ticket_type as $key => $value) : ?>
-                                    <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+                                <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="search_kh ms-1">
                             <label for="kh"><i class="fa-solid fa-check-to-slot"></i> Khứ hồi</label>
-                            <input type="checkbox" class="form-check-input" name="s_round_trip" id="kh" placeholder="from..." >
+                            <input type="checkbox" class="form-check-input" name="s_round_trip" id="kh"
+                                placeholder="from...">
                         </div>
                     </div>
 
@@ -129,26 +138,19 @@ $ticket_type = pdo_query("select * from ticket_type ");
                     <button class="flight_shouldcome_img_next"><i class="fa-solid fa-chevron-right"></i></button>
 
                     <div class="row slider_js">
-                        <div class="col-3 shouldcome_item">
+                        <?php foreach ($slide as $key => $value):?>
+                        <div class="col-3 shouldcome_item_1">
                             <a href="">
-                                <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
+                                <div class="flight_shouldcome_img"
+                                    style="background-image: url('../upload/<?=$value['image']?>');">
                                 </div>
                                 <div class="flght_shouldcome_text">
-                                    <h5>Nước Thái Lan </h5>
-                                    <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
+                                    <h5><?=$value['title']?></h5>
+                                    <p><?=$value['description']?></p>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-3 shouldcome_item">
-                            <a href="">
-                                <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
-                                </div>
-                                <div class="flght_shouldcome_text">
-                                    <h5>Nước Thái Lan </h5>
-                                    <p>Du khách đã tiêm phòng có thể đến thăm mặt khách đã tiêm phòng có thể đến thăm mặt nạ</p>
-                                </div>
-                            </a>
-                        </div>
+                        <?php endforeach?>
                     </div>
                 </div>
             </div>
@@ -169,7 +171,8 @@ $ticket_type = pdo_query("select * from ticket_type ");
                     <div class="row slider_js">
                         <div class="col-3">
                             <a href="">
-                                <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2020/11/dest_usa_utah_salt-lake-city_salt-lake-city-airport_shutterstock-portfolio_1011872626_universal_within-usage-period_63084-1_graded-1024x700.jpg');">
+                                <div class="flight_shouldcome_img"
+                                    style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2020/11/dest_usa_utah_salt-lake-city_salt-lake-city-airport_shutterstock-portfolio_1011872626_universal_within-usage-period_63084-1_graded-1024x700.jpg');">
                                 </div>
                                 <div class="flght_shouldcome_text">
                                     <h5>Cách thức hoạt động của Least CO₂ sorter</h5>
@@ -179,7 +182,8 @@ $ticket_type = pdo_query("select * from ticket_type ");
                         </div>
                         <div class="col-3">
                             <a href="">
-                                <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
+                                <div class="flight_shouldcome_img"
+                                    style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2017/01/adc91ebd-f21a-34d0-bb2c-3d4039e381f5.jpg');">
                                 </div>
                                 <div class="flght_shouldcome_text">
                                     <h5>Các điểm đến bị đánh giá thấp nhất trên khắp Hoa Kỳ </h5>
@@ -189,17 +193,20 @@ $ticket_type = pdo_query("select * from ticket_type ");
                         </div>
                         <div class="col-3">
                             <a href="">
-                                <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2019/05/2f5e8edc-752c-394d-b304-249db8bba475.jpg');">
+                                <div class="flight_shouldcome_img"
+                                    style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2019/05/2f5e8edc-752c-394d-b304-249db8bba475.jpg');">
                                 </div>
                                 <div class="flght_shouldcome_text">
-                                    <h5> Một chuyến đi ngoạn mục ở Florida: không phải là những nghi ngờ thông thường của bạn </h5>
+                                    <h5> Một chuyến đi ngoạn mục ở Florida: không phải là những nghi ngờ thông thường
+                                        của bạn </h5>
                                     <p>Ngày 31 tháng 10 năm 2022 - 8 phút</p>
                                 </div>
                             </a>
                         </div>
                         <div class="col-3">
                             <a href="">
-                                <div class="flight_shouldcome_img" style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2019/04/b4eac335-e67e-3ca2-a758-41ac21847dee.jpg');">
+                                <div class="flight_shouldcome_img"
+                                    style="background-image: url('https://www.momondo.com/discover/wp-content/uploads/sites/260/2019/04/b4eac335-e67e-3ca2-a758-41ac21847dee.jpg');">
                                 </div>
                                 <div class="flght_shouldcome_text">
                                     <h5>Chuyến đi đường bộ Hoa Kỳ: khám phá đất nước hẻm núi phía Tây Nam Hoa Kỳ
@@ -222,7 +229,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
             <div class="row">
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>Barcelona</h6>
@@ -232,7 +241,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
 
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>Lisbon</h6>
@@ -242,7 +253,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
 
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>Amsterdam</h6>
@@ -252,7 +265,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
 
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>San Fransico</h6>
@@ -262,7 +277,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
 
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>Tel Aviv</h6>
@@ -271,7 +288,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
                 </div>
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>Athens</h6>
@@ -280,7 +299,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
                 </div>
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>New Delhi</h6>
@@ -290,7 +311,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
 
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>X-toc-khom</h6>
@@ -300,7 +323,9 @@ $ticket_type = pdo_query("select * from ticket_type ");
 
                 <div class="col-4  ">
                     <div class="city_trend_item d-flex">
-                        <div><img class="city_trend_img" src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true" alt=""></div>
+                        <div><img class="city_trend_img"
+                                src="https://content.r9cdn.net/rimg/dimg/0e/7b/d80b3441-city-22567-177c9458568.jpg?width=300&height=150&xhint=890&yhint=953&crop=true"
+                                alt=""></div>
                         <div class="city_trend_text">
                             <p>Chuyến bay đến</p>
                             <h6>Madrid</h6>

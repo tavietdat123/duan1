@@ -139,9 +139,10 @@ include "../DAO/news_DAO.php";
 include "../DAO/ticket_DAO.php";
 include "../DAO/type_ticket_DAO.php";
 include "../DAO/flight_DAO.php";
-
 include "../DAO/endow_DAO.php";
 include "../DAO/contact_DAO.php";
+include "../DAO/experience_DAO.php";
+include "../DAO/slideShow_DAO.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -410,88 +411,6 @@ if (isset($_GET['action'])) {
             include 'contact/listContact.php';
 
             break;
-        case 'listNews';
-
-            $loadAllNews = loadAllNews();
-
-            include 'news/listNews.php';
-            break;
-
-        case 'deleteNews':
-
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-
-                deleteNews($_GET['id']);
-            }
-
-            $loadAllNews = loadAllNews();
-
-            include 'news/listNews.php';
-
-            break;
-
-        case "addNews":
-
-            //Kiểm tra xem người dùng có click vào nút Thêm mới không 
-            if (isset($_POST['addNews']) && ($_POST['addNews'])) {
-
-                $title = $_POST['title'];
-                $image = $_FILES['image']['name'];
-                $content = $_POST['content'];
-                $createdAt = date('h:i:sa d/m/Y');
-
-                $target_dir = "../img/";
-                $image = $target_dir . basename($_FILES['image']['name']);
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
-                } else {
-                }
-
-                addNews($title, $image,$content, $createdAt);
-
-                $thongbao = "Thêm thông tin thành công";
-            }
-
-            $loadAllNews = loadAllNews();
-            include "news/addNews.php";
-            break;
-
-        case 'fixNews':
-
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-
-                $loadOneNews = loadOneNews($_GET['id']);
-                extract($loadOneNews);
-            }
-            include 'news/updateNews.php';
-            break;
-
-        case 'updateNews':
-            if (isset($_POST['addNews']) && ($_POST['addNews'])) {
-
-                $id = $_POST['id'];
-                $title = $_POST['title'];
-
-                $image = $_FILES['image']['name'];
-
-                $content = $_POST['content'];
-
-
-                $createdAt = date('h:i:sa d/m/Y');
-
-                $target_dir = "../img/";
-                $image = $target_dir . basename($_FILES['image']['name']);
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
-                } else {
-                }
-
-                updateNews($id, $title, $image, $content, $createdAt);
-
-                $thongbao = "Thêm thông tin thành công";
-            }
-
-            $loadAllNews = loadAllNews();
-            include 'news/listNews.php';
-            break;
         case 'list_endow':
             $loadAllEndow = loadAllEndow();
             include 'endow/list_endow.php';
@@ -604,6 +523,116 @@ if (isset($_GET['action'])) {
             $loadAllEndow = loadAllEndow();
             include 'endow/list_endow.php';
             break;
+
+            // Experience
+        case 'experience':
+                $loadAllExperience = loadAllExperience();
+            include 'experience/listExperience.php';
+            break;
+        case 'addExperience':
+                $loadAllExperience = loadAllExperience();
+                include 'experience/taoExperience.php';
+                break;
+        case 'taoExperience':
+            if (isset($_POST['taoExperience']) && ($_POST['taoExperience'])) {
+                    $imgadd = $_FILES['image'];
+                    $title = $_POST['title'];
+                    $description = $_POST['description'];
+                    $imgEx = $imgadd['name'];
+                    move_uploaded_file($imgadd['tmp_name'], "../upload/".$imgEx);
+                    addExperience($imgEx,$title,$description);
+            }
+            $loadAllExperience = loadAllExperience();
+            include 'experience/listExperience.php';
+            break;
+    
+        case 'xoaExperience':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                deleteExperience($_GET['id']);
+            }
+
+            $loadAllExperience = loadAllExperience();
+        include 'experience/listExperience.php';
+        break;
+        case 'suaExperience':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                $loadOneExperience = loadOneExperience($_GET['id']);
+                extract($loadOneExperience);
+            }
+            $loadAllExperience = loadAllExperience();
+            include 'experience/updateExperience.php';
+            break;
+        case 'updateExperience':
+            if (isset($_POST['updateExperience']) && ($_POST['updateExperience'])) {
+                $id = $_POST['id'];
+                $imgadd = $_FILES['image'];
+                $imgEx = $_POST['imgup'];
+                $title = $_POST['title'];
+                $linkImg = "../upload/";
+                $description = $_POST['description'];
+            move_uploaded_file($imgadd['tmp_name'], $linkImg.$imgEx);
+            updateExperience($id,$imgEx,$title,$description);
+        }
+            $loadAllExperience = loadAllExperience();
+            include 'experience/listExperience.php';
+            break;
+            // Slideshow
+            
+        case 'slideShow':
+                $loadAllSlideshow = loadAllSlideshow();
+            include 'slideShow/listSlideShow.php';
+            break;
+        case 'addSlideShow':
+                $loadAllSlideshow = loadAllSlideshow();
+                include 'slideShow/taoSlideShow.php';
+                break;
+        case 'taoSlideShow':
+            if (isset($_POST['taoSlideShow']) && ($_POST['taoSlideShow'])) {
+                        $imgupload = $_FILES['img'];
+                        $title = $_POST['title'];
+                        $description = $_POST['description'];
+                        $linkImg = "../upload/";
+                        $image = $imgupload['name'];
+                        move_uploaded_file($imgupload['tmp_name'],$linkImg.$image);
+                        addSlideshow($image,$title,$description);
+            }
+            $loadAllSlideshow = loadAllSlideshow();
+            include 'slideShow/listSlideShow.php';
+            break;
+        case 'xoaSlideshow':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+    
+                    deleteSlideshow($_GET['id']);
+                }
+    
+                $loadAllSlideshow = loadAllSlideshow();
+            include 'slideShow/listSlideShow.php';
+            break;
+        case 'suaSlideshow':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+    
+                    $loadOneSlideshow = loadOneSlideshow($_GET['id']);
+                    extract($loadOneSlideshow);
+                }
+                $loadAllSlideshow = loadAllSlideshow();
+                include 'slideShow/updateSlideShow.php';
+                break;
+        case 'updateSlideshow':
+            if (isset($_POST['updateSlideshow']) && ($_POST['updateSlideshow'])) {
+                $id = $_POST['id'];
+                $imgupload = $_FILES['img'];
+                $title = $_POST['title'];
+                $description = $_POST['description'];
+                $linkImg = "../upload/";
+                $image = $_POST['imgup'];
+                move_uploaded_file($imgupload['tmp_name'],$linkImg.$image);
+                updateSlideshow($id,$image,$title,$description);
+            }
+                $loadAllSlideshow = loadAllSlideshow();
+                include 'slideShow/listSlideShow.php';
+                break;
         default:
             include "body.php";
             break;

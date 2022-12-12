@@ -84,7 +84,18 @@
                                 <span class="text nav-text">Bill đã thanh toán</span>
                             </a>
                         </li>
-
+                        <li class="nav-link">
+                            <a href="index.php?action=experience">
+                                <i class="bx bx-info-circle icon"></i>
+                                <span class="text nav-text">Trải nghiệm</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="index.php?action=slideShow">
+                                <i class="bx bx-info-circle icon"></i>
+                                <span class="text nav-text">Slide Show</span>
+                            </a>
+                        </li>
                         <li class="nav-link">
                             <a href="index.php?action=list_endow">
                                 <i class="bx bxs-party icon"></i>
