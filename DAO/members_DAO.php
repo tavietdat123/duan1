@@ -25,10 +25,10 @@ function loadOneMember($id)
     return $loadOneMember;
 }
 
-function updateMember($id, $fullName, $passWord, $email, $role)
+function updateMember($id, $fullName, $passWord, $email, $role, $status)
 {
 
-    $sql = "update account set fullName='" . $fullName . "', passWord='" . $passWord . "', email='" . $email . "', role='" . $role . "' where id=" . $id;
+    $sql = "update account set fullName='" . $fullName . "', passWord='" . $passWord . "', email='" . $email . "', role='" . $role . "', status='" . $status . "' where id=" . $id;
     
     pdo_execute($sql);
 }

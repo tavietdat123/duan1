@@ -360,12 +360,14 @@ if (isset($_GET['action'])) {
                 $check_role = $_POST['check_role'];
                 if ($check_role == 'Admin') {
                     $role = 0;
-                } else if ($check_role == 'Thành viên') {
+                    $status = 0;
+                } 
+                if ($check_role == 'Thành viên') {
                     $role = 1;
                 } else {
                     $role = 0;
                 }
-                updateMember($id, $fullName, $passWord, $email, $role);
+                updateMember($id, $fullName, $passWord, $email, $role, $status);
 
                 // $thongbao = "Cập nhật thông tin thành công";
             }
