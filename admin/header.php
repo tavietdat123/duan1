@@ -51,7 +51,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="index.php?action=listNews">
+                            <a href="index.php?action=news">
                                 <i class="bx bx-bell icon"></i>
                                 <span class="text nav-text">Tin tức</span>
                             </a>

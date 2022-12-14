@@ -633,6 +633,92 @@ if (isset($_GET['action'])) {
                 $loadAllSlideshow = loadAllSlideshow();
                 include 'slideShow/listSlideShow.php';
                 break;
+
+            
+        case 'news';
+
+        $loadAllNews = loadAllNews();
+
+        include 'news/listNews.php';
+        break;
+
+    case 'deleteNews':
+
+        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+            deleteNews($_GET['id']);
+        }
+
+        $loadAllNews = loadAllNews();
+
+        include 'news/listNews.php';
+
+        break;
+
+    case "addNews":
+
+        //Kiểm tra xem người dùng có click vào nút Thêm mới không 
+        if (isset($_POST['addNews']) && ($_POST['addNews'])) {
+
+            $imgNews = $_FILES['imgNews']['name'];
+
+            $contenNew	 = $_POST['contenNew'];
+
+            $dateNews = date('h:i:sa d/m/Y');
+            $descNew	 = $_POST['descNew'];
+
+            $target_dir = "../upload/";
+
+            $imgNews = $target_dir . basename($_FILES['imgNews']['name']);
+
+            if (move_uploaded_file($_FILES['imgNews']['tmp_name'], $imgNews)) {
+            } else {
+            }
+
+            addNews($imgNews, $contenNew, $dateNews, $descNew);
+
+            $thongbao = "Thêm thông tin thành công";
+        }
+
+        $loadAllNews = loadAllNews();
+        include "news/addNews.php";
+        break;
+
+        case 'fixNews':
+
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+
+                $loadOneNews = loadOneNews($_GET['id']);
+                extract($loadOneNews);
+            }
+            include 'news/updateNews.php';
+            break;
+
+        case 'updateNews':
+            if (isset($_POST['addNews']) && ($_POST['addNews'])) {
+
+                $imgNews = $_FILES['imgNews']['name'];
+    
+                $contenNew	 = $_POST['contenNew'];
+    
+                $dateNews = date('h:i:sa d/m/Y');
+                $descNew	 = $_POST['descNew'];
+    
+                $target_dir = "../upload/";
+    
+                $imgNews = $target_dir . basename($_FILES['imgNews']['name']);
+    
+                if (move_uploaded_file($_FILES['imgNews']['tmp_name'], $imgNews)) {
+                } else {
+                }
+    
+                addNews($imgNews, $contenNew, $dateNews, $descNew);
+                $thongbao = "Thêm thông tin thành công";
+            }
+
+            $loadAllNews = loadAllNews();
+            include 'news/listNews.php';
+            break;
         default:
             include "body.php";
             break;

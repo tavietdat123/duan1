@@ -1,7 +1,7 @@
 <?php
-function addNews($title, $image1, $image2, $image3, $content1, $content2, $content3, $createdAt)
+function addNews($imgNews, $contenNew, $dateNews, $descNew)
 {
-    $sql = "insert into news(title, image1, image2, image3, content1, content2, content3, created_at) values('$title', '$image1', '$image2', '$image3', '$content1', '$content2', '$content3', '$createdAt')";
+    $sql = "insert into news(imgNews, contenNew, dateNews, descNew) values('$imgNews', '$contenNew', '$dateNews', '$descNew')";
 
     pdo_execute($sql);
 }
